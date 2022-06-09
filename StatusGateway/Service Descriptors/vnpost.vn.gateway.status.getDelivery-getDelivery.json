@@ -1,0 +1,126 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "getDelivery",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/serviceApi/v1/getDelivery" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-serviceApi-v1-getDelivery",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "FromRecord",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "ToRecord",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetDeliveryResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetDeliveryResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "GetDeliveryResponse" : {
+      "type" : "object",
+      "properties" : {
+        "TotalRecord" : {
+          "type" : "integer"
+        },
+        "Deliverys" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Deliverys",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "Deliverys" : {
+      "type" : "object",
+      "required" : [ "DeliveryID", "ItemCode", "CustomerCode", "AcceptancePOSCode", "ToPOSCode" ],
+      "properties" : {
+        "DeliveryID" : {
+          "type" : "string"
+        },
+        "ItemCode" : {
+          "type" : "string"
+        },
+        "CustomerCode" : {
+          "type" : "string"
+        },
+        "AcceptancePOSCode" : {
+          "type" : "string"
+        },
+        "ToPOSCode" : {
+          "type" : "string"
+        },
+        "SendingTime" : {
+          "type" : "string"
+        },
+        "DeliveryTime" : {
+          "type" : "string"
+        },
+        "DeliveryTimes" : {
+          "type" : "integer"
+        },
+        "ReceiverName" : {
+          "type" : "string"
+        },
+        "InputTime" : {
+          "type" : "string"
+        },
+        "CreateTime" : {
+          "type" : "string"
+        },
+        "LastUpdateTime" : {
+          "type" : "string"
+        },
+        "IsDeliverable" : {
+          "type" : "boolean"
+        },
+        "IsReturn" : {
+          "type" : "boolean"
+        },
+        "DeliveryNote" : {
+          "type" : "string"
+        },
+        "CauseCode" : {
+          "type" : "string"
+        },
+        "CauseName" : {
+          "type" : "string"
+        },
+        "SolutionCode" : {
+          "type" : "string"
+        },
+        "SolutionName" : {
+          "type" : "string"
+        },
+        "DataCode" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

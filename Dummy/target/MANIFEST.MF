@@ -1,0 +1,16 @@
+Manifest-Version: 1.0.0.202206061629
+Bundle-SymbolicName: Dummy
+Bundle-ManifestVersion: 2
+TIBCO-BW-Edition: bwe,bwcf
+Bundle-Vendor: TIBCO Software Inc.
+TIBCO-BW-ModuleSharedVariables: META-INF/module.msv
+Require-Capability: com.tibco.bw.model; filter:="(name=bwext)",com.tib
+ co.bw.palette; filter:="(name=bw.generalactivities)"
+TIBCO-BW-ConfigProfile: META-INF/default.substvar
+TIBCO-BW-Version: 6.7.0 V34 2020-11-06
+Bundle-Name: Dummy Module
+Bundle-Version: 1.0.0.202206061629
+Bundle-ClassPath: .
+TIBCO-BW-ApplicationModule: META-INF/module.bwm
+TIBCO-BW-JobSharedVariables: META-INF/module.jsv
+

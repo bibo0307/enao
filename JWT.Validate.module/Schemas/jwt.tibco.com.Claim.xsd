@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="www.tibco.com/plugin/java/xmlSchema/jwt.tibco.com.Claim" xmlns:tns="www.tibco.com/plugin/java/xmlSchema/jwt.tibco.com.Claim" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="Claim" type="tns:ClaimType"/>
+
+  <xs:complexType name="ClaimType">
+    <xs:sequence>
+      <xs:element name="Key" type="xs:string" minOccurs="0"/>
+      <xs:element name="Value" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

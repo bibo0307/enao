@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EntFramework Module
+Bundle-SymbolicName: PrjPattern
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: TIBCO Software Inc.
+Export-Package: .
+Require-Capability: com.tibco.bw.model; filter:="(name=bwext)",com.tibco.bw.module; filter:="(&(name=DataObjects)(version=1.0.0))",com.tibco.bw.palette; filter:="(name=bw.generalactivities)",com.tibco.bw.palette; filter:="(name=bw.jms)",com.tibco.bw.sharedresource.model; filter:="(name=bw.jmsconnection)",com.tibco.bw.sharedresource.model; filter:="(name=bw.jndiconfiguration)"
+TIBCO-BW-Version: 6.4.0 HF1 V33 2017-07-17
+Provide-Capability: com.tibco.bw.module; name="PrjPattern"; version:Version="1.0.0",
+ com.tibco.bw.schemas; ns="framework/utilities/logging/logger",
+ com.tibco.bw.schemas; ns="framework/utilities/pattern",
+ com.tibco.bw.wsdls; ns="framework/utilities/logging/logger",
+ com.tibco.bw.wsdls; ns="fw/utilites/pattern/DynProcess4RequestReply/",
+ com.tibco.bw.wsdls; ns="http://xmlns.example.com/20170808164658",
+ com.tibco.bw.wsdls; ns="http://xmlns.example.com/20170808223633",
+ com.tibco.bw.wsdls; ns="http://xmlns.example.com/20170811102316",
+ com.tibco.bw.processes; name="Utilities.Logging",
+ com.tibco.bw.processes; name="Utilities.Pattern",
+ com.tibco.bw.resources; name="entframework"
+TIBCO-BW-Edition: bwe
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+TIBCO-BW-ConfigProfile: META-INF/default.substvar
+TIBCO-BW-ModuleSharedVariables: META-INF/module.msv
+TIBCO-BW-JobSharedVariables: META-INF/module.jsv
+TIBCO-BW-SharedModule: META-INF/module.bwm

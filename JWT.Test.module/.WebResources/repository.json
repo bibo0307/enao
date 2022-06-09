@@ -1,0 +1,7 @@
+{
+    "records": [],
+    "resources": [{
+        "location": "Service Descriptors/jwt.test.module.Process-Test.json",
+        "type": "generated"
+    }]
+}

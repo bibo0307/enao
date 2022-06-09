@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://www.tibco.com/psg/gc/framework/message/V1" xmlns:cmd-fw="datamodel/datatypes/common/framework" xmlns:cmd-svrenv="datamodel/datatypes/common/serviceenvelope" xmlns:pref="http://www.example.org/Framework" xmlns:ptn="framework/utilities/pattern" elementFormDefault="qualified" targetNamespace="framework/utilities/pattern">
+
+	<import namespace="datamodel/datatypes/common/framework"/>
+	<import namespace="datamodel/datatypes/common/serviceenvelope"/>
+	<complexType name="InvokeRequestType">
+		<sequence>
+			<element name="RequestMessageType" type="cmd-fw:MessageRequestType"/>
+			<element name="DynProcessInfo" type="cmd-fw:DynProcessInfoType"/>
+			<element name="ServiceInfo" type="cmd-fw:ServiceInfoType"/>
+		</sequence>
+	</complexType>
+
+	<element name="InvokeRequest" type="ptn:InvokeRequestType"/>
+
+	<element name="InvokeResponse" type="ptn:InvokeResponseType"/>
+
+	<element name="InvokeFault" type="ptn:InvokeFaultType"/>
+
+	<complexType name="InvokeResponseType">
+		<sequence>
+			<element name="ReplyMessage" type="cmd-fw:ReplyMessageType"/>
+
+		</sequence>
+	</complexType>
+
+	<complexType name="InvokeFaultType">
+		<sequence>
+			<element name="fault" type="string"/>
+		</sequence>
+	</complexType>
+</schema>

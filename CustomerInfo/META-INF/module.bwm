@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:CustomerInfo="http://bidv.service.envelop/data/CustomerInfo" xmlns:CustomerInfoSvc="http://www.tibco.com/CustomerInfoSvc/" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:axis2="http://xsd.tns.tibco.com/bw/models/binding/soap/axis2" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:property="http://ns.tibco.com/bw/property" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_3C4PEAlcEeyFEKRTKNwFCA" targetNamespace="http://tns.tibco.com/bw/composite/CustomerInfo" name="CustomerInfo" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_VPpTMAleEey4L_7UajZB1g" name="CustomerInfoSvc" promote="ComponentCustomerInfoSvc/CustomerInfoSvc">
+    <sca:interface.wsdl xmi:id="_VP0SUAleEey4L_7UajZB1g" interface="http://www.tibco.com/CustomerInfoSvc/#wsdl.interface(CustomerInfoSvc)" scaext:wsdlLocation="../Service%20Descriptors/CustomerInfoSvc.wsdl"/>
+    <scaext:binding xsi:type="axis2:SOAPServiceBinding" xmi:id="_VQJpgAleEey4L_7UajZB1g" name="SOAPServiceBinding" targetNamespace="http://www.tibco.com/485b3eb06bd447d1a94c43ca3b58c956/SOAPServiceBinding" soapVersion="1.2" portTypeQName="CustomerInfoSvc:CustomerInfoSvc" transportBindingType="HTTP" attachmentStyle="SwA" modelVersion="1.2.0" portTypeWSDLLocation="platform:/resource/CustomerInfo/Service%20Descriptors/CustomerInfoSvc.wsdl">
+      <bindingType xmi:id="_VQfnwAleEey4L_7UajZB1g"/>
+      <inboundConfiguration xsi:type="axis2:HttpTransportConfiguration" xmi:id="_9vF0IAl3Eeypir-uEQGaSg" endpointURI="/SOAPServiceBinding/customerInfoSvc/" httpConnector="customerinfo.HTTPConnectorResource"/>
+      <operationConfiguration xmi:id="_VQlHUAleEey4L_7UajZB1g" operationName="GetCustInfo" action="GetCustInfo" actionNeeded="true">
+        <bindingType xmi:id="_VQlHUQleEey4L_7UajZB1g"/>
+        <messageConfiguration xmi:id="_VQlHUgleEey4L_7UajZB1g" messageQName="CustomerInfoSvc:GetCustInfoRequest" wsdlLocation="platform:/resource/CustomerInfo/Service%20Descriptors/CustomerInfoSvc.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_VQlHUwleEey4L_7UajZB1g" partName="request" partElementName="CustomerInfo:custInfoReq"/>
+        </messageConfiguration>
+        <messageConfiguration xmi:id="_VQlHVAleEey4L_7UajZB1g" messageQName="CustomerInfoSvc:GetCustInfoResponse" messageDirection="OUTPUT" wsdlLocation="platform:/resource/CustomerInfo/Service%20Descriptors/CustomerInfoSvc.wsdl">
+          <messagePartConfigurations xsi:type="axis2:BodyPartConfiguration" xmi:id="_VQlHVQleEey4L_7UajZB1g" partName="response" partElementName="CustomerInfo:custInfoRes"/>
+        </messageConfiguration>
+        <context xmi:id="_VQluYAleEey4L_7UajZB1g">
+          <inputMapping xmi:id="_VQmVcAleEey4L_7UajZB1g"/>
+          <outputMapping xmi:id="_VQmVcQleEey4L_7UajZB1g" direction="OUTPUT"/>
+        </context>
+      </operationConfiguration>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_VQmVcgleEey4L_7UajZB1g" bindingName="SOAPServiceBinding"/>
+  </sca:service>
+  <sca:property xmi:id="_3PtxMAlcEeyFEKRTKNwFCA" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3P2UEAlcEeyFEKRTKNwFCA" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3P9BwAlcEeyFEKRTKNwFCA" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3QChUAlcEeyFEKRTKNwFCA" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3QHZ0AlcEeyFEKRTKNwFCA" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3QMSUAlcEeyFEKRTKNwFCA" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3QQjwAlcEeyFEKRTKNwFCA" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3QVcQAlcEeyFEKRTKNwFCA" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_3QaUwAlcEeyFEKRTKNwFCA" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_G46X8NTiEeyaSb6PPs_TZg" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_1BpFMAleEey4L_7UajZB1g" name="/JMSConnection/url" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_AmscwAlfEey4L_7UajZB1g" name="/JMSConnection/username" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Cmbf4AlfEey4L_7UajZB1g" name="/JMSConnection/password" type="property:password" scaext:simpleValue="#!CbPwxhquWsZXwtlsFCGXOg==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_Hu2yQAlfEey4L_7UajZB1g" name="/CustInfo/ServiceName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_LtiOUAlfEey4L_7UajZB1g" name="/CustInfo/ServiceVersion" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_NoYKYAlfEey4L_7UajZB1g" name="/CustInfo/ServiceQueueName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_ZagCsAlhEey4L_7UajZB1g" name="/CustInfo/OperationName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_DZWBMAl4Eeypir-uEQGaSg" name="/CustInfo/ServiceURL" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_GWQeQAl4Eeypir-uEQGaSg" name="/CustInfo/ServicePort" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_VPZbkAleEey4L_7UajZB1g" name="ComponentCustomerInfoSvc" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_VPZbkQleEey4L_7UajZB1g" processName="bidv.custinfo.interface.CustomerInfoSvc"/>
+    <sca:service xmi:id="_VPe7IAleEey4L_7UajZB1g" name="CustomerInfoSvc">
+      <sca:interface.wsdl xmi:id="_VPgwUAleEey4L_7UajZB1g" interface="http://www.tibco.com/CustomerInfoSvc/#wsdl.interface(CustomerInfoSvc)" scaext:wsdlLocation="../Service%20Descriptors/CustomerInfoSvc.wsdl"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_XbiusAo9Eeym6sVpGALofg" name="ComponentDummy" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_XbjVwAo9Eeym6sVpGALofg" processName="test.Dummy"/>
+  </sca:component>
+</sca:composite>

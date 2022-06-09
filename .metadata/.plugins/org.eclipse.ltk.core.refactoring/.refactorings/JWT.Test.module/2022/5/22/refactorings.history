@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete Module Configuration Property &apos;BW.HOST.NAME1&apos;" description="Delete Module Configuration Property &apos;BW.HOST.NAME1&apos;" flags="7" id="com.tibco.bw.core.design.refactoring.delete.moduleproperty" stamp="1653285870002"/>
+</session>

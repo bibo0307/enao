@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/CLEFramework" xmlns:tns="http://www.example.org/CLEFramework" elementFormDefault="qualified">
+
+	<element name="DebugFailure" type="tns:DebugFailureType"></element>
+    
+    <complexType name="DebugFailureType">
+    	<sequence>
+    		<element name="SOAMsgId" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="MsgId" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Direction" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="FromId" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="FromName" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="CorrelationId" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="ParentmsgId" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="CreateTime" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="ServiceName" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="OperationName" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Version" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="TimeDuration" type="string" maxOccurs="1" minOccurs="0"></element>    		
+    		<element name="Status" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="ErrorCode" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="ErrorDescription" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="TransactionBefore" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="TransactionAfter" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <element name="ExceptionFailure" type="tns:ExceptionFailureType"></element>
+    
+    <complexType name="ExceptionFailureType">
+    	 <sequence>
+    		<element name="SOAMsgId" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="CreateTime" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="ServiceName" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="OperationName" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Version" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="HostName" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="LogCategory" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="StackTrace" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Msg" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="FullClass" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Class" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="ProcessStack" type="string" maxOccurs="1" minOccurs="0"></element>    		
+    		<element name="MsgCode" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Data" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+</schema>

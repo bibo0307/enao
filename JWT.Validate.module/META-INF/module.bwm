@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmi:id="_HuJmAEApEeeK3-iiuz76kQ" targetNamespace="http://tns.tibco.com/bw/composite/JWT.Validate.module" name="JWT.Validate.module" compositeext:version="1.0.0" compositeext:description="Implements a sample JSON Web Token (JWT) verification based on a HMAC256 secret." compositeext:formatVersion="2">
+  <sca:property xmi:id="_HxktcEApEeeK3-iiuz76kQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_HxuecEApEeeK3-iiuz76kQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Hx3oYEApEeeK3-iiuz76kQ" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Hx3oYUApEeeK3-iiuz76kQ" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Hx3oYkApEeeK3-iiuz76kQ" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Hx3oY0ApEeeK3-iiuz76kQ" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+</sca:composite>

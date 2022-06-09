@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema elementFormDefault="qualified" targetNamespace="http://www.vnpost.vn/service/api/order" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.vnpost.vn/service/api/order">
+
+    <complexType name="OrderItem">
+    	<sequence>
+    		<element minOccurs="0" name="PosIdCollect" type="int"/>
+    		<element minOccurs="0" name="ItemCode" type="string"/>
+    		<element minOccurs="0" name="CustomerCode" type="string"/>
+    		<element minOccurs="0" name="OrderNumber" type="string"/>
+    		<element minOccurs="0" name="CODAmount" type="double"/>
+    		<element minOccurs="0" name="SenderProvince" type="int"/>
+    		<element minOccurs="0" name="SenderDistrict" type="int"/>
+    		<element minOccurs="0" name="SenderAddress" type="string"/>
+    		<element minOccurs="0" name="SenderName" type="string"/>
+    		<element minOccurs="0" name="SenderEmail" type="string"/>
+    		<element minOccurs="0" name="SenderTel" type="string"/>
+    		<element minOccurs="0" name="SenderDesc" type="string"/>
+    		<element minOccurs="0" name="Description" type="string"/>
+    		<element minOccurs="0" name="ReceiverName" type="string"/>
+    		<element minOccurs="0" name="ReceiverAddress" type="string">
+    		</element>
+    		<element minOccurs="0" name="ReceiverTel" type="string"/>
+    		<element minOccurs="0" name="ReceiverProvince" type="string">
+    		</element>
+    		<element minOccurs="0" name="ReceiverDistrict" type="string">
+    		</element>
+    		<element minOccurs="0" name="ReceiverEmail" type="string"/>
+    		<element minOccurs="0" name="ExtendData" type="string"/>
+    		<element minOccurs="0" name="FlagConfig" type="string"/>
+    		<element minOccurs="0" name="SenderPostalCode" type="string"/>
+    		<element minOccurs="0" name="ReceiverPostalCode" type="string"/>
+    		<element minOccurs="0" name="SenderCommune" type="string"/>
+    		<element minOccurs="0" name="ReceiverCommune" type="string"/>
+    		<element minOccurs="0" name="Trongluong" type="double"/>
+    		<element minOccurs="0" name="ChieuDai" type="double"/>
+    		<element minOccurs="0" name="ChieuRong" type="double"/>
+    		<element minOccurs="0" name="ChieuCao" type="double"/>
+    	</sequence>
+    </complexType>
+
+    <element name="Order" type="tns:OrderItem"/>
+
+
+    <complexType name="CancelOrderType">
+    	<sequence>
+    		<element name="CustomerCode" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="OrderNumber" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="CancelOrderRequest" type="tns:CancelOrderType"></element>
+</schema>

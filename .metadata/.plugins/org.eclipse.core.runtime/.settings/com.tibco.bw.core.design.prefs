@@ -1,0 +1,3 @@
+com.tibco.bw.core.design.projectDefaults.createEmptyProcess=false
+com.tibco.bw.core.design.runDebug.allowDebuggingWithProblems=false
+eclipse.preferences.version=1

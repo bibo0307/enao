@@ -1,0 +1,1313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpws:process exitOnStandardFault="no"
+    name="bidv.custinfo.interface.CustomerInfoSvc"
+    suppressJoinFailure="yes"
+    targetNamespace="http://xmlns.example.com/20210830144846"
+    xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:info="http://www.tibco.com/bw/process/info"
+    xmlns:ns="http://xmlns.example.com/20210830144846PLT"
+    xmlns:ns0="http://www.tibco.com/pe/EngineTypes"
+    xmlns:ns1="http://www.tibco.com/CustomerInfoSvc/"
+    xmlns:ns2="http://bidv.service.envelop/data/CustomerInfo"
+    xmlns:ns3="http://xmlns.example.com/20170811102316"
+    xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+34d74455-ada2-4df4-b728-856a0f1f764e"
+    xmlns:ns5="framework/utilities/logging/logger"
+    xmlns:ns6="http://tns.tibco.com/bw/palette/internal/activityerror+d148a812-40b9-4c91-95cd-cfce798dbc46"
+    xmlns:ns7="http://tns.tibco.com/bw/palette/internal/activityerror+8cf3cc77-ce4a-43bc-a464-c4b83d64218d"
+    xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
+    xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
+    xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions"
+    xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
+    xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <tibex:Types>
+        <xs:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://www.tibco.com/pe/EngineTypes"
+            xmlns:tns="http://www.tibco.com/pe/EngineTypes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="ErrorReport">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="StackTrace" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Msg" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="FullClass" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Class" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessStack" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="MsgCode" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Data" type="tns:anydata"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="OptionalErrorReport">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0"
+                        name="StackTrace" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Msg" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0"
+                        name="FullClass" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Class" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0"
+                        name="ProcessStack" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="MsgCode" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Data" type="tns:anydata"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="FaultDetail">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ActivityName" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0" name="Data" type="tns:anydata"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Msg" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="MsgCode" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessStack" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="StackTrace" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="FullClass" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="Class" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="ProcessContext">
+                <xs:sequence>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="JobId" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ApplicationName" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="EngineName" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="ProcessInstanceId" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" minOccurs="0"
+                        name="CustomJobId" type="xs:string"/>
+                    <!--xs:element name="RestartedFromCheckpoint" form="unqualified" block="extension restriction substitution" type="xs:boolean"/-->
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" maxOccurs="unbounded"
+                        minOccurs="0" name="TrackingInfo" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType block="extension restriction"
+                final="extension restriction" name="anydata">
+                <xs:sequence>
+                    <xs:any namespace="##any" processContents="lax"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="OptionalErrorReport" type="tns:OptionalErrorReport"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="ErrorReport" type="tns:ErrorReport"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="FaultDetail" type="tns:FaultDetail"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="ProcessContext" type="tns:ProcessContext"/>
+            <xs:element block="extension restriction substitution"
+                final="extension restriction" name="CorrelationValue" type="xs:string"/>
+        </xs:schema>
+        <schema attributeFormDefault="unqualified"
+            elementFormDefault="unqualified"
+            targetNamespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"
+            version="" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions">
+            <complexType name="ActivityExceptionType">
+                <sequence>
+                    <element name="msg" type="string"/>
+                    <element minOccurs="0" name="msgCode" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityException" type="tns:ActivityExceptionType"/>
+            <complexType name="ActivityTimedOutExceptionType">
+                <complexContent>
+                    <extension base="tns:ActivityExceptionType"/>
+                </complexContent>
+            </complexType>
+            <element name="ActivityTimedOutException" type="tns:ActivityTimedOutExceptionType"/>
+            <complexType name="DuplicateKeyExceptionType">
+                <complexContent>
+                    <extension base="tns:ActivityExceptionType">
+                        <sequence>
+                            <element name="duplicateKey" type="string"/>
+                            <element minOccurs="0" name="previousJobID" type="string"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <element name="DuplicateKeyException" type="tns:DuplicateKeyExceptionType"/>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+d148a812-40b9-4c91-95cd-cfce798dbc46"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+d148a812-40b9-4c91-95cd-cfce798dbc46">
+            <import namespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:ActivityTimedOutException"/>
+                </choice>
+            </complexType>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+8cf3cc77-ce4a-43bc-a464-c4b83d64218d"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"
+            xmlns:Q2="framework/utilities/pattern" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+8cf3cc77-ce4a-43bc-a464-c4b83d64218d">
+            <import namespace="framework/utilities/pattern"/>
+            <import namespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:ActivityTimedOutException"/>
+                    <element maxOccurs="1" minOccurs="1" ref="Q2:InvokeFault"/>
+                </choice>
+            </complexType>
+        </schema>
+        <wsdl:definitions
+            targetNamespace="http://xmlns.example.com/20210830144846PLT"
+            xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+            xmlns:ptyp="http://www.tibco.com/CustomerInfoSvc/"
+            xmlns:ptyp1="http://xmlns.example.com/20170811102316"
+            xmlns:ptyp2="http://xmlns.example.com/20170808223633"
+            xmlns:ptyp3="framework/utilities/logging/logger"
+            xmlns:tns="http://xmlns.example.com/20210830144846PLT"
+            xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <plnk:partnerLinkType name="partnerLinkType">
+                <plnk:role name="use" portType="ptyp:CustomerInfoSvc"/>
+            </plnk:partnerLinkType>
+            <plnk:partnerLinkType name="partnerLinkType1">
+                <plnk:role name="use" portType="ptyp1:Service"/>
+            </plnk:partnerLinkType>
+            <plnk:partnerLinkType name="partnerLinkType2">
+                <plnk:role name="use" portType="ptyp3:CLELogger"/>
+            </plnk:partnerLinkType>
+            <wsdl:import namespace="http://www.tibco.com/CustomerInfoSvc/"/>
+            <wsdl:import namespace="http://xmlns.example.com/20170811102316"/>
+            <wsdl:import namespace="http://xmlns.example.com/20170808223633"/>
+            <wsdl:import namespace="framework/utilities/logging/logger"/>
+        </wsdl:definitions>
+    </tibex:Types>
+    <tibex:ProcessInfo callable="false" createdBy="dohuy"
+        createdOn="Mon Aug 30 14:48:46 ICT 2021" description=""
+        extraErrorVars="true" modifiers="public"
+        productVersion="6.6.1 HF2 V57 2020-08-14" scalable="false"
+        singleton="true" stateless="true" type="IT"/>
+    <tibex:ProcessInterface context="" input="" output=""/>
+    <tibex:ProcessTemplateConfigurations/>
+    <notation:Diagram measurementUnit="Pixel" type="BWProcess"
+        xmlns:bwnotation="http://tns.tibco.com/bw/runtime/BWNotation"
+        xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <children type="2001">
+            <children type="5001"/>
+            <children type="3001">
+                <children type="4001">
+                    <children type="4017">
+                        <styles fontName=".AppleSystemUIFont"
+                            lineColor="0" xsi:type="notation:ShapeStyle"/>
+                        <layoutConstraint xsi:type="notation:Bounds"/>
+                    </children>
+                    <children type="4017">
+                        <styles fontName=".AppleSystemUIFont"
+                            lineColor="0" xsi:type="notation:ShapeStyle"/>
+                        <layoutConstraint xsi:type="notation:Bounds"/>
+                    </children>
+                    <children type="4017">
+                        <styles fontName=".AppleSystemUIFont"
+                            lineColor="0" xsi:type="notation:ShapeStyle"/>
+                        <layoutConstraint xsi:type="notation:Bounds"/>
+                    </children>
+                    <children type="4017">
+                        <styles fontName=".AppleSystemUIFont"
+                            lineColor="0" xsi:type="notation:ShapeStyle"/>
+                        <layoutConstraint xsi:type="notation:Bounds"/>
+                    </children>
+                    <children type="40011"/>
+                    <children type="3006">
+                        <styles xsi:type="notation:DrawerStyle"/>
+                        <styles xsi:type="notation:SortingStyle"/>
+                        <styles xsi:type="notation:FilteringStyle"/>
+                        <styles xsi:type="bwnotation:BackgroundStyle"/>
+                        <styles xsi:type="bwnotation:ResizingStyle"/>
+                    </children>
+                    <styles fontName=".AppleSystemUIFont" lineColor="0" xsi:type="notation:ShapeStyle"/>
+                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                    <element href="//0/@process/@partnerLinks/@children.0"/>
+                    <layoutConstraint xsi:type="notation:Bounds"/>
+                </children>
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+                <element href="//0/@process"/>
+            </children>
+            <children type="3002">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+            </children>
+            <children type="3003">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+            </children>
+            <children type="3004">
+                <children type="4018">
+                    <children type="3018">
+                        <children type="4020">
+                            <children type="3020">
+                                <children type="4005">
+                                    <children type="3007">
+                                    <children type="4010">
+                                    <children type="5002"/>
+                                    <children type="3010">
+                                    <children type="4013">
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    <layoutConstraint
+                                    height="34"
+                                    width="34" x="9"
+                                    xsi:type="notation:Bounds" y="55"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+                                    <children type="3011">
+                                    <children type="4011">
+                                    <children type="3012">
+                                    <children type="4002">
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint
+                                    xsi:type="notation:Bounds" y="40"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    </children>
+                                    <children type="3013">
+                                    <children type="4018">
+                                    <children type="3018">
+
+                                    <children type="4020">
+
+                                    <children type="3020">
+
+                                    <children type="4005">
+
+                                    <children type="3007">
+
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.2"/>
+
+                                    <layoutConstraint
+                                    x="261"
+                                    xsi:type="notation:Bounds" y="15"/>
+                                    </children>
+
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.3"/>
+
+                                    <layoutConstraint
+                                    x="-62"
+                                    xsi:type="notation:Bounds" y="15"/>
+                                    </children>
+
+                                    <children type="4002 bw.generalactivities.bwassign">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.4"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="6"
+                                    xsi:type="notation:Bounds" y="15"/>
+                                    </children>
+
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.5"/>
+
+                                    <layoutConstraint
+                                    x="106"
+                                    xsi:type="notation:Bounds" y="107"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:DrawerStyle"/>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity"/>
+
+                                    <layoutConstraint
+                                    height="228"
+                                    width="499" xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+
+                                    <layoutConstraint
+                                    height="193"
+                                    width="502"
+                                    x="15" xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4022">
+
+                                    <children type="3022">
+
+                                    <children type="4029">
+
+                                    <children type="3031">
+
+                                    <children type="4033">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll"/>
+
+                                    <layoutConstraint
+                                    height="34"
+                                    width="34"
+                                    xsi:type="notation:Bounds" y="68"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+
+                                    <children type="3032">
+
+                                    <children type="4005">
+
+                                    <children type="3007">
+
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.0"/>
+
+                                    <layoutConstraint
+                                    x="-5"
+                                    xsi:type="notation:Bounds" y="39"/>
+                                    </children>
+
+                                    <children type="4002">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.1"/>
+
+                                    <layoutConstraint
+                                    x="178"
+                                    xsi:type="notation:Bounds" y="39"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:DrawerStyle"/>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity"/>
+
+                                    <layoutConstraint
+                                    height="168"
+                                    width="421" xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles xsi:type="notation:SortingStyle"/>
+
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    </children>
+
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers"/>
+
+                                    <layoutConstraint
+                                    height="200"
+                                    width="-96" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+                                    </children>
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
+
+                                    <layoutConstraint
+                                    height="429"
+                                    width="542" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    </children>
+                                    <children type="3016">
+                                    <children type="4002">
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.1"/>
+
+                                    <layoutConstraint
+                                    xsi:type="notation:Bounds" y="40"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    </children>
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
+                                    <layoutConstraint
+                                    height="448"
+                                    width="604"
+                                    x="2" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    </children>
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
+                                    <layoutConstraint
+                                    height="478" width="623" xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles xsi:type="notation:DrawerStyle"/>
+                                    <styles xsi:type="notation:SortingStyle"/>
+                                    <styles xsi:type="notation:FilteringStyle"/>
+                                    <element href="//0/@process/@activity/@activity"/>
+                                    </children>
+                                    <styles
+                                    fontName=".AppleSystemUIFont"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <element href="//0/@process/@activity/@activity"/>
+                                    <layoutConstraint height="488"
+                                    width="633" xsi:type="notation:Bounds"/>
+                                </children>
+                                <styles xsi:type="notation:SortingStyle"/>
+                                <styles xsi:type="notation:FilteringStyle"/>
+                            </children>
+                            <styles fontName=".AppleSystemUIFont"
+                                lineColor="0" xsi:type="notation:ShapeStyle"/>
+                            <styles xsi:type="bwnotation:BackgroundStyle"/>
+                            <styles xsi:type="bwnotation:ResizingStyle"/>
+                            <element href="//0/@process/@activity"/>
+                            <layoutConstraint height="488" width="636" xsi:type="notation:Bounds"/>
+                        </children>
+                        <styles xsi:type="notation:SortingStyle"/>
+                        <styles xsi:type="notation:FilteringStyle"/>
+                        <element href="//0/@process/@activity"/>
+                    </children>
+                    <styles fontName=".AppleSystemUIFont" lineColor="0" xsi:type="notation:ShapeStyle"/>
+                    <styles xsi:type="bwnotation:BackgroundStyle"/>
+                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                    <element href="//0/@process/@activity"/>
+                    <layoutConstraint height="512" width="636" x="1"
+                        xsi:type="notation:Bounds" y="1"/>
+                </children>
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+                <element href="//0/@process"/>
+            </children>
+            <styles fontName=".AppleSystemUIFont" lineColor="0" xsi:type="notation:ShapeStyle"/>
+            <element href="//0/@process"/>
+            <layoutConstraint height="564" width="978" xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:DiagramStyle"/>
+        <element href="//0"/>
+        <edges
+            source="//@children.0/@children.1/@children.0/@children.1"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1/@children.0/@children.3" type="4016">
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName=".AppleSystemUIFont" xsi:type="notation:FontStyle"/>
+            <element xsi:nil="true"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName=".AppleSystemUIFont" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.0"/>
+            <bendpoints points="[10, -24, -24, 63]$[24, -62, -10, 25]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName=".AppleSystemUIFont" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.0"/>
+            <bendpoints points="[25, 0, -158, 0]$[159, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName=".AppleSystemUIFont" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName=".AppleSystemUIFont" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
+            <bendpoints points="[25, -15, -130, 77]$[131, -77, -24, 15]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+    </notation:Diagram>
+    <tibex:NamespaceRegistry enabled="true">
+        <tibex:namespaceItem
+            namespace="http://xmlns.example.com/20170811102316" prefix="tns"/>
+        <tibex:namespaceItem
+            namespace="datamodel/datatypes/common/serviceenvelope" prefix="cmd-svrenv"/>
+        <tibex:namespaceItem
+            namespace="datamodel/datatypes/common/framework" prefix="cmd-fw"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/bw/xpath/bw-custom-functions" prefix="bw"/>
+        <tibex:namespaceItem namespace="framework/utilities/pattern" prefix="ptn"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/bw/xslt/custom-functions" prefix="tib"/>
+        <tibex:namespaceItem
+            namespace="http://bidv.service.envelop/data/CustomerInfo" prefix="Q1"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/CustomerInfoSvc/" prefix="tns1"/>
+    </tibex:NamespaceRegistry>
+    <bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../../../../Service%20Descriptors/CustomerInfoSvc.wsdl" namespace="http://www.tibco.com/CustomerInfoSvc/"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema"
+        location="../../../../Schemas/CustomerInfo.xsd" namespace="http://bidv.service.envelop/data/CustomerInfo"/>
+    <bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../../../../../PrjPattern/Service%20Descriptors/CLELogger.wsdl" namespace="framework/utilities/logging/logger"/>
+    <bpws:import importType="http://schemas.xmlsoap.org/wsdl/"
+        location="../../../../../PrjPattern/Service%20Descriptors/PtnRequestReplyService.wsdl" namespace="http://xmlns.example.com/20170811102316"/>
+    <bpws:partnerLinks>
+        <bpws:partnerLink myRole="use" name="CustomerInfoSvc"
+            partnerLinkType="ns:partnerLinkType" sca-bpel:ignore="false" sca-bpel:service="CustomerInfoSvc"/>
+        <bpws:partnerLink name="PtnRequestReply"
+            partnerLinkType="ns:partnerLinkType1" partnerRole="use"
+            sca-bpel:ignore="true" sca-bpel:reference="PtnRequestReply" sca-bpel:wiredByImpl="false">
+            <tibex:ReferenceWire dynamic="false" inline="true"
+                processConfigurationName=""
+                processName="Utilities.Pattern.PtnRequestReply" serviceName="PtnRequestReply"/>
+        </bpws:partnerLink>
+        <bpws:partnerLink name="CLELogger"
+            partnerLinkType="ns:partnerLinkType2" partnerRole="use"
+            sca-bpel:ignore="true" sca-bpel:reference="CLELogger" sca-bpel:wiredByImpl="false">
+            <tibex:ReferenceWire dynamic="false" inline="false"
+                processConfigurationName=""
+                processName="Utilities.Logging.CLELogger" serviceName="CLELogger"/>
+        </bpws:partnerLink>
+    </bpws:partnerLinks>
+    <bpws:variables>
+        <bpws:variable element="ns0:ProcessContext"
+            name="_processContext" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns1:GetCustInfoRequest"
+            name="GetCustInfo" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns1:GetCustInfoResponse"
+            name="GetCustInfoOut-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:custInfoReq" name="request"/>
+        <bpws:variable element="ns0:ErrorReport" name="_error" sca-bpel:internal="true"/>
+        <bpws:variable name="messageId" type="xsd:string"/>
+        <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
+        <bpws:variable element="ns0:FaultDetail" name="FaultDetails" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns5:ExceptionRequest"
+            name="CLELogger-input" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns1:GetCustInfoResponse"
+            name="Reply-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns6:ActivityErrorData"
+            name="_error_CLELogger" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns3:InvokeRequest"
+            name="Invoke1-input" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns3:InvokeResponse" name="Invoke1" sca-bpel:internal="true"/>
+        <bpws:variable element="ns7:ActivityErrorData"
+            name="_error_Invoke1" sca-bpel:internal="true"/>
+    </bpws:variables>
+    <bpws:extensions>
+        <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
+        <bpws:extension mustUnderstand="no" namespace="http://www.tibco.com/bw/process/info"/>
+        <bpws:extension mustUnderstand="no" namespace="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"/>
+        <bpws:extension mustUnderstand="no" namespace="http://docs.oasis-open.org/ns/opencsa/sca/200912"/>
+        <bpws:extension mustUnderstand="no" namespace="http://ns.tibco.com/bw/property"/>
+        <bpws:extension mustUnderstand="no" namespace="http://www.tibco.com/bpel/2007/extensions"/>
+    </bpws:extensions>
+    <bpws:scope name="scope">
+        <bpws:flow name="flow">
+            <bpws:links/>
+            <bpws:pick createInstance="yes" name="pick" tibex:xpdlId="542638bb-857e-410a-95fa-762aa9a07cd7">
+                <bpws:onMessage operation="GetCustInfo"
+                    partnerLink="CustomerInfoSvc"
+                    portType="ns1:CustomerInfoSvc"
+                    tibex:xpdlId="ed7cf736-dc1e-408a-b7a9-2f117364f7bd" variable="GetCustInfo">
+                    <bpws:scope name="scope1">
+                        <bpws:faultHandlers>
+                            <bpws:catchAll
+                                tibex:faultDetailsVar="FaultDetails"
+                                tibex:faultNameVar="FaultName" tibex:xpdlId="93475b21-0a63-4688-b8d5-e036e8ec415c">
+                                <bpws:scope name="scope2">
+                                    <bpws:flow name="flow2">
+                                    <bpws:links>
+                                    <bpws:link
+                                    name="CLELoggerToReply" tibex:linkType="SUCCESS"/>
+                                    </bpws:links>
+                                    <bpws:invoke
+                                    inputVariable="CLELogger-input"
+                                    name="CLELogger"
+                                    operation="Exception"
+                                    partnerLink="CLELogger"
+                                    portType="ns5:CLELogger" tibex:xpdlId="d148a812-40b9-4c91-95cd-cfce798dbc46">
+                                    <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="framework/utilities/logging/logger" xmlns:cmd-svrenv="datamodel/datatypes/common/serviceenvelope" version="2.0"&gt;&lt;xsl:param name="messageId"/&gt;&lt;xsl:param name="FaultDetails"/&gt;&lt;xsl:template name="CLELogger-input" match="/"&gt;&lt;tns:ExceptionRequest&gt;&lt;parameters&gt;&lt;tns:ExceptionRequest&gt;&lt;tns:ServiceHeader&gt;&lt;cmd-svrenv:ServiceVersion&gt;&lt;xsl:value-of select="&amp;quot;1.0&amp;quot;"/&gt;&lt;/cmd-svrenv:ServiceVersion&gt;&lt;cmd-svrenv:MessageID&gt;&lt;xsl:value-of select="$messageId"/&gt;&lt;/cmd-svrenv:MessageID&gt;&lt;cmd-svrenv:CorrelationID&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:CorrelationID&gt;&lt;cmd-svrenv:ParentMessageID&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:ParentMessageID&gt;&lt;cmd-svrenv:FromID&gt;&lt;cmd-svrenv:ID&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:ID&gt;&lt;cmd-svrenv:Name&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:Name&gt;&lt;/cmd-svrenv:FromID&gt;&lt;cmd-svrenv:CreateTime&gt;&lt;xsl:value-of select="current-dateTime()"/&gt;&lt;/cmd-svrenv:CreateTime&gt;&lt;cmd-svrenv:Signature&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:Signature&gt;&lt;/tns:ServiceHeader&gt;&lt;tns:StackTrace&gt;&lt;xsl:value-of select="$FaultDetails/StackTrace"/&gt;&lt;/tns:StackTrace&gt;&lt;tns:ErrorCode&gt;&lt;xsl:value-of select="$FaultDetails/MsgCode"/&gt;&lt;/tns:ErrorCode&gt;&lt;tns:ErrorMessage&gt;&lt;xsl:value-of select="$FaultDetails/Msg"/&gt;&lt;/tns:ErrorMessage&gt;&lt;tns:FullClass&gt;&lt;xsl:value-of select="$FaultDetails/FullClass"/&gt;&lt;/tns:FullClass&gt;&lt;tns:Class&gt;&lt;xsl:value-of select="$FaultDetails/Class"/&gt;&lt;/tns:Class&gt;&lt;tns:ProcessStack&gt;&lt;xsl:value-of select="$FaultDetails/ProcessStack"/&gt;&lt;/tns:ProcessStack&gt;&lt;/tns:ExceptionRequest&gt;&lt;/parameters&gt;&lt;/tns:ExceptionRequest&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+                                    <tibex:inputBindings>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;framework/utilities/logging/logger&quot; xmlns:cmd-svrenv=&quot;datamodel/datatypes/common/serviceenvelope&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;messageId&quot;/>&#xa;    &lt;xsl:param name=&quot;FaultDetails&quot;/>&#xa;    &lt;xsl:template name=&quot;CLELogger-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns:ExceptionRequest>&#xa;            &lt;tns:ServiceHeader>&#xa;                &lt;cmd-svrenv:ServiceVersion>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;1.0&amp;quot;&quot;/>&#xa;                &lt;/cmd-svrenv:ServiceVersion>&#xa;                &lt;cmd-svrenv:MessageID>&#xa;                    &lt;xsl:value-of select=&quot;$messageId&quot;/>&#xa;                &lt;/cmd-svrenv:MessageID>&#xa;                &lt;cmd-svrenv:CorrelationID>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                &lt;/cmd-svrenv:CorrelationID>&#xa;                &lt;cmd-svrenv:ParentMessageID>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                &lt;/cmd-svrenv:ParentMessageID>&#xa;                &lt;cmd-svrenv:FromID>&#xa;                    &lt;cmd-svrenv:ID>&#xa;                        &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                    &lt;/cmd-svrenv:ID>&#xa;                    &lt;cmd-svrenv:Name>&#xa;                        &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                    &lt;/cmd-svrenv:Name>&#xa;                &lt;/cmd-svrenv:FromID>&#xa;                &lt;cmd-svrenv:CreateTime>&#xa;                    &lt;xsl:value-of select=&quot;current-dateTime()&quot;/>&#xa;                &lt;/cmd-svrenv:CreateTime>&#xa;                &lt;cmd-svrenv:Signature>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                &lt;/cmd-svrenv:Signature>&#xa;            &lt;/tns:ServiceHeader>&#xa;            &lt;tns:StackTrace>&#xa;                &lt;xsl:value-of select=&quot;$FaultDetails/StackTrace&quot;/>&#xa;            &lt;/tns:StackTrace>&#xa;            &lt;tns:ErrorCode>&#xa;                &lt;xsl:value-of select=&quot;$FaultDetails/MsgCode&quot;/>&#xa;            &lt;/tns:ErrorCode>&#xa;            &lt;tns:ErrorMessage>&#xa;                &lt;xsl:value-of select=&quot;$FaultDetails/Msg&quot;/>&#xa;            &lt;/tns:ErrorMessage>&#xa;            &lt;tns:FullClass>&#xa;                &lt;xsl:value-of select=&quot;$FaultDetails/FullClass&quot;/>&#xa;            &lt;/tns:FullClass>&#xa;            &lt;tns:Class>&#xa;                &lt;xsl:value-of select=&quot;$FaultDetails/Class&quot;/>&#xa;            &lt;/tns:Class>&#xa;            &lt;tns:ProcessStack>&#xa;                &lt;xsl:value-of select=&quot;$FaultDetails/ProcessStack&quot;/>&#xa;            &lt;/tns:ProcessStack>&#xa;        &lt;/tns:ExceptionRequest>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <bpws:sources>
+                                    <bpws:source linkName="CLELoggerToReply"/>
+                                    </bpws:sources>
+                                    </bpws:invoke>
+                                    <bpws:reply name="Reply"
+                                    operation="GetCustInfo"
+                                    partnerLink="CustomerInfoSvc"
+                                    portType="ns1:CustomerInfoSvc"
+                                    tibex:xpdlId="0c21eb14-3b19-4777-9608-bbf60242feaa" variable="Reply-input">
+                                    <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://www.tibco.com/CustomerInfoSvc/" xmlns:Q1="http://bidv.service.envelop/data/CustomerInfo" version="2.0"&gt;&lt;xsl:template name="Reply-input" match="/"&gt;&lt;tns1:GetCustInfoResponse&gt;&lt;response&gt;&lt;Q1:custInfoRes&gt;&lt;Q1:CIF&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/Q1:CIF&gt;&lt;Q1:IdentificationNo&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/Q1:IdentificationNo&gt;&lt;Q1:Address&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/Q1:Address&gt;&lt;Q1:FullName&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/Q1:FullName&gt;&lt;Q1:Branch&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/Q1:Branch&gt;&lt;/Q1:custInfoRes&gt;&lt;/response&gt;&lt;/tns1:GetCustInfoResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+                                    <tibex:inputBindings>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.tibco.com/CustomerInfoSvc/&quot; xmlns:Q1=&quot;http://bidv.service.envelop/data/CustomerInfo&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;Reply-input&quot; match=&quot;/&quot;>&#xa;        &lt;Q1:custInfoRes>&#xa;            &lt;Q1:CIF>&#xa;                &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;            &lt;/Q1:CIF>&#xa;            &lt;Q1:IdentificationNo>&#xa;                &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;            &lt;/Q1:IdentificationNo>&#xa;            &lt;Q1:Address>&#xa;                &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;            &lt;/Q1:Address>&#xa;            &lt;Q1:FullName>&#xa;                &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;            &lt;/Q1:FullName>&#xa;            &lt;Q1:Branch>&#xa;                &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;            &lt;/Q1:Branch>&#xa;        &lt;/Q1:custInfoRes>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <bpws:targets>
+                                    <bpws:target linkName="CLELoggerToReply"/>
+                                    </bpws:targets>
+                                    </bpws:reply>
+                                    </bpws:flow>
+                                </bpws:scope>
+                            </bpws:catchAll>
+                        </bpws:faultHandlers>
+                        <bpws:flow name="flow1">
+                            <bpws:links>
+                                <bpws:link
+                                    name="AssignMsgIdToPtnRequestReply" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="AssignToInvoke1" tibex:linkType="SUCCESS"/>
+                                <bpws:link
+                                    name="Invoke1ToGetCustInfoOut" tibex:linkType="SUCCESS"/>
+                            </bpws:links>
+                            <bpws:empty name="OnMessageStart"
+                                tibex:constructor="onMessageStart" tibex:xpdlId="044ba288-14e6-44f0-9e43-51114c3bb814"/>
+                            <bpws:empty name="OnMessageEnd"
+                                tibex:constructor="onMessageEnd" tibex:xpdlId="c164cc31-f569-4027-87f1-96d82fcc0c2f"/>
+                            <bpws:reply name="GetCustInfoOut"
+                                operation="GetCustInfo"
+                                partnerLink="CustomerInfoSvc"
+                                portType="ns1:CustomerInfoSvc"
+                                tibex:xpdlId="e2197357-a9a7-4e68-9360-d407e7c2a231" variable="GetCustInfoOut-input">
+                                <tibex:inputBindings>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.tibco.com/CustomerInfoSvc/&quot; xmlns:Q1=&quot;http://bidv.service.envelop/data/CustomerInfo&quot; xmlns:ptn=&quot;framework/utilities/pattern&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:import-schema namespace=&quot;http://bidv.service.envelop/data/CustomerInfo&quot; schema-location=&quot;../../../../Schemas/CustomerInfo.xsd&quot;/>&#xa;    &lt;xsl:param name=&quot;Invoke1.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;GetCustInfoOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;Q1:custInfoRes>&#xa;            &lt;Q1:CIF>&#xa;                &lt;xsl:value-of select=&quot;$Invoke1.parameters/ptn:ReplyMessage/Q1:custInfoRes/Q1:CIF&quot;/>&#xa;            &lt;/Q1:CIF>&#xa;            &lt;Q1:IdentificationNo>&#xa;                &lt;xsl:value-of select=&quot;$Invoke1.parameters/ptn:ReplyMessage/Q1:custInfoRes/Q1:IdentificationNo&quot;/>&#xa;            &lt;/Q1:IdentificationNo>&#xa;            &lt;xsl:if test=&quot;$Invoke1.parameters/ptn:ReplyMessage/Q1:custInfoRes/Q1:Address&quot;>&#xa;                &lt;Q1:Address>&#xa;                    &lt;xsl:value-of select=&quot;$Invoke1.parameters/ptn:ReplyMessage/Q1:custInfoRes/Q1:Address&quot;/>&#xa;                &lt;/Q1:Address>&#xa;            &lt;/xsl:if>&#xa;            &lt;xsl:if test=&quot;$Invoke1.parameters/ptn:ReplyMessage/Q1:custInfoRes/Q1:FullName&quot;>&#xa;                &lt;Q1:FullName>&#xa;                    &lt;xsl:value-of select=&quot;$Invoke1.parameters/ptn:ReplyMessage/Q1:custInfoRes/Q1:FullName&quot;/>&#xa;                &lt;/Q1:FullName>&#xa;            &lt;/xsl:if>&#xa;            &lt;xsl:if test=&quot;$Invoke1.parameters/ptn:ReplyMessage/Q1:custInfoRes/Q1:Branch&quot;>&#xa;                &lt;Q1:Branch>&#xa;                    &lt;xsl:value-of select=&quot;$Invoke1.parameters/ptn:ReplyMessage/Q1:custInfoRes/Q1:Branch&quot;/>&#xa;                &lt;/Q1:Branch>&#xa;            &lt;/xsl:if>&#xa;        &lt;/Q1:custInfoRes>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                </tibex:inputBindings>
+                                <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!--START COERCIONS--&gt;
+&lt;!-- $Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/*, element, Q1:custInfoRes --&gt;
+&lt;!--END COERCIONS--&gt;&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://www.tibco.com/CustomerInfoSvc/" xmlns:Q1="http://bidv.service.envelop/data/CustomerInfo" xmlns:ptn="framework/utilities/pattern" version="2.0"&gt;&lt;xsl:import-schema namespace="http://bidv.service.envelop/data/CustomerInfo" schema-location="../../../../Schemas/CustomerInfo.xsd"/&gt;&lt;xsl:param name="Invoke1"/&gt;&lt;xsl:template name="GetCustInfoOut-input" match="/"&gt;&lt;tns1:GetCustInfoResponse&gt;&lt;response&gt;&lt;Q1:custInfoRes&gt;&lt;Q1:CIF&gt;&lt;xsl:value-of select="$Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/Q1:custInfoRes/Q1:CIF"/&gt;&lt;/Q1:CIF&gt;&lt;Q1:IdentificationNo&gt;&lt;xsl:value-of select="$Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/Q1:custInfoRes/Q1:IdentificationNo"/&gt;&lt;/Q1:IdentificationNo&gt;&lt;xsl:if test="$Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/Q1:custInfoRes/Q1:Address"&gt;&lt;Q1:Address&gt;&lt;xsl:value-of select="$Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/Q1:custInfoRes/Q1:Address"/&gt;&lt;/Q1:Address&gt;&lt;/xsl:if&gt;&lt;xsl:if test="$Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/Q1:custInfoRes/Q1:FullName"&gt;&lt;Q1:FullName&gt;&lt;xsl:value-of select="$Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/Q1:custInfoRes/Q1:FullName"/&gt;&lt;/Q1:FullName&gt;&lt;/xsl:if&gt;&lt;xsl:if test="$Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/Q1:custInfoRes/Q1:Branch"&gt;&lt;Q1:Branch&gt;&lt;xsl:value-of select="$Invoke1/parameters/ptn:InvokeResponse/ptn:ReplyMessage/Q1:custInfoRes/Q1:Branch"/&gt;&lt;/Q1:Branch&gt;&lt;/xsl:if&gt;&lt;/Q1:custInfoRes&gt;&lt;/response&gt;&lt;/tns1:GetCustInfoResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+                                <bpws:targets>
+                                    <bpws:target linkName="Invoke1ToGetCustInfoOut"/>
+                                </bpws:targets>
+                            </bpws:reply>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    inputVariable="messageId"
+                                    name="AssignMsgId"
+                                    outputVariable="messageId"
+                                    tibex:xpdlId="fb6f0e09-db4a-47c6-b27a-e6a0991b85aa" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:sources>
+                                    <bpws:source linkName="AssignMsgIdToPtnRequestReply"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="tib:uuid()" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.generalactivities.bwassign"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//BWAssign"/>
+                                    <value
+                                    processVariable="messageId" xsi:type="generalactivities:BWAssign"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:Q1=&quot;http://bidv.service.envelop/data/CustomerInfo&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;GetCustInfo&quot;/>&lt;xsl:template name=&quot;request&quot; match=&quot;/&quot;>&lt;Q1:custInfoReq>&lt;Q1:CIF>&lt;xsl:value-of select=&quot;$GetCustInfo/request/Q1:custInfoReq/Q1:CIF&quot;/>&lt;/Q1:CIF>&lt;Q1:IdentificationNo>&lt;xsl:value-of select=&quot;$GetCustInfo/request/Q1:custInfoReq/Q1:IdentificationNo&quot;/>&lt;/Q1:IdentificationNo>&lt;/Q1:custInfoReq>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="request"
+                                    name="Assign"
+                                    outputVariable="request"
+                                    tibex:xpdlId="a0343cd9-1efe-4a46-a326-e6a515cb1d43" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="AssignMsgIdToPtnRequestReply"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="AssignToInvoke1"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:Q1=&quot;http://bidv.service.envelop/data/CustomerInfo&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;GetCustInfo.request&quot;/>&#xa;    &lt;xsl:template name=&quot;request&quot; match=&quot;/&quot;>&#xa;        &lt;Q1:custInfoReq>&#xa;            &lt;Q1:CIF>&#xa;                &lt;xsl:value-of select=&quot;$GetCustInfo.request/Q1:CIF&quot;/>&#xa;            &lt;/Q1:CIF>&#xa;            &lt;Q1:IdentificationNo>&#xa;                &lt;xsl:value-of select=&quot;$GetCustInfo.request/Q1:IdentificationNo&quot;/>&#xa;            &lt;/Q1:IdentificationNo>&#xa;        &lt;/Q1:custInfoReq>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.generalactivities.bwassign"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//BWAssign"/>
+                                    <value
+                                    processVariable="request" xsi:type="generalactivities:BWAssign"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
+                            <bpws:invoke inputVariable="Invoke1-input"
+                                name="Invoke1" operation="Invoke"
+                                outputVariable="Invoke1"
+                                partnerLink="PtnRequestReply"
+                                portType="ns3:Service" tibex:xpdlId="8cf3cc77-ce4a-43bc-a464-c4b83d64218d">
+                                <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://xmlns.example.com/20170811102316" xmlns:ptn="framework/utilities/pattern" xmlns:cmd-fw="datamodel/datatypes/common/framework" xmlns:cmd-svrenv="datamodel/datatypes/common/serviceenvelope" xmlns:bw="http://www.tibco.com/bw/xpath/bw-custom-functions" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" version="2.0"&gt;&lt;xsl:param name="request"/&gt;&lt;xsl:template name="Invoke1-input" match="/"&gt;&lt;tns:InvokeRequest&gt;&lt;parameters&gt;&lt;ptn:InvokeRequest&gt;&lt;ptn:RequestMessageType&gt;&lt;cmd-fw:ServiceHeader&gt;&lt;cmd-svrenv:ServiceVersion&gt;&lt;xsl:value-of select="bw:getModuleProperty(&amp;quot;/CustInfo/ServiceVersion&amp;quot;)"/&gt;&lt;/cmd-svrenv:ServiceVersion&gt;&lt;cmd-svrenv:MessageID&gt;&lt;xsl:value-of select="tib:uuid()"/&gt;&lt;/cmd-svrenv:MessageID&gt;&lt;cmd-svrenv:CorrelationID&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:CorrelationID&gt;&lt;cmd-svrenv:ParentMessageID&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:ParentMessageID&gt;&lt;cmd-svrenv:FromID&gt;&lt;cmd-svrenv:ID&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:ID&gt;&lt;cmd-svrenv:Name&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:Name&gt;&lt;/cmd-svrenv:FromID&gt;&lt;cmd-svrenv:CreateTime&gt;&lt;xsl:value-of select="current-dateTime()"/&gt;&lt;/cmd-svrenv:CreateTime&gt;&lt;cmd-svrenv:Signature&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-svrenv:Signature&gt;&lt;/cmd-fw:ServiceHeader&gt;&lt;cmd-fw:MessageType&gt;&lt;xsl:copy-of select="$request"/&gt;&lt;/cmd-fw:MessageType&gt;&lt;cmd-fw:SOAMsgId&gt;&lt;xsl:value-of select="&amp;quot;&amp;quot;"/&gt;&lt;/cmd-fw:SOAMsgId&gt;&lt;/ptn:RequestMessageType&gt;&lt;ptn:DynProcessInfo&gt;&lt;cmd-fw:Application&gt;&lt;xsl:value-of select="bw:getModuleProperty(&amp;quot;BW.APPLICATION.NAME&amp;quot;)"/&gt;&lt;/cmd-fw:Application&gt;&lt;cmd-fw:Version&gt;&lt;xsl:value-of select="bw:getModuleProperty(&amp;quot;/CustInfo/ServiceVersion&amp;quot;)"/&gt;&lt;/cmd-fw:Version&gt;&lt;cmd-fw:ProcessName&gt;&lt;xsl:value-of select="&amp;quot;GetCustInfoImpl&amp;quot;"/&gt;&lt;/cmd-fw:ProcessName&gt;&lt;/ptn:DynProcessInfo&gt;&lt;ptn:ServiceInfo&gt;&lt;cmd-fw:ServiceName&gt;&lt;xsl:value-of select="bw:getModuleProperty(&amp;quot;/CustInfo/ServiceName&amp;quot;)"/&gt;&lt;/cmd-fw:ServiceName&gt;&lt;cmd-fw:Version&gt;&lt;xsl:value-of select="bw:getModuleProperty(&amp;quot;/CustInfo/ServiceVersion&amp;quot;)"/&gt;&lt;/cmd-fw:Version&gt;&lt;cmd-fw:OperationName&gt;&lt;xsl:value-of select="bw:getModuleProperty(&amp;quot;/CustInfo/OperationName&amp;quot;)"/&gt;&lt;/cmd-fw:OperationName&gt;&lt;/ptn:ServiceInfo&gt;&lt;/ptn:InvokeRequest&gt;&lt;/parameters&gt;&lt;/tns:InvokeRequest&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+                                <tibex:inputBindings>
+                                    <tibex:partBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://xmlns.example.com/20170811102316&quot; xmlns:ptn=&quot;framework/utilities/pattern&quot; xmlns:cmd-fw=&quot;datamodel/datatypes/common/framework&quot; xmlns:cmd-svrenv=&quot;datamodel/datatypes/common/serviceenvelope&quot; xmlns:bw=&quot;http://www.tibco.com/bw/xpath/bw-custom-functions&quot; xmlns:tib=&quot;http://www.tibco.com/bw/xslt/custom-functions&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;request&quot;/>&#xa;    &lt;xsl:template name=&quot;Invoke1-input&quot; match=&quot;/&quot;>&#xa;        &lt;ptn:InvokeRequest>&#xa;            &lt;ptn:RequestMessageType>&#xa;                &lt;cmd-fw:ServiceHeader>&#xa;                    &lt;cmd-svrenv:ServiceVersion>&#xa;                        &lt;xsl:value-of select=&quot;bw:getModuleProperty(&amp;quot;/CustInfo/ServiceVersion&amp;quot;)&quot;/>&#xa;                    &lt;/cmd-svrenv:ServiceVersion>&#xa;                    &lt;cmd-svrenv:MessageID>&#xa;                        &lt;xsl:value-of select=&quot;tib:uuid()&quot;/>&#xa;                    &lt;/cmd-svrenv:MessageID>&#xa;                    &lt;cmd-svrenv:CorrelationID>&#xa;                        &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                    &lt;/cmd-svrenv:CorrelationID>&#xa;                    &lt;cmd-svrenv:ParentMessageID>&#xa;                        &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                    &lt;/cmd-svrenv:ParentMessageID>&#xa;                    &lt;cmd-svrenv:FromID>&#xa;                        &lt;cmd-svrenv:ID>&#xa;                            &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                        &lt;/cmd-svrenv:ID>&#xa;                        &lt;cmd-svrenv:Name>&#xa;                            &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                        &lt;/cmd-svrenv:Name>&#xa;                    &lt;/cmd-svrenv:FromID>&#xa;                    &lt;cmd-svrenv:CreateTime>&#xa;                        &lt;xsl:value-of select=&quot;current-dateTime()&quot;/>&#xa;                    &lt;/cmd-svrenv:CreateTime>&#xa;                    &lt;cmd-svrenv:Signature>&#xa;                        &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                    &lt;/cmd-svrenv:Signature>&#xa;                &lt;/cmd-fw:ServiceHeader>&#xa;                &lt;cmd-fw:MessageType>&#xa;                    &lt;xsl:copy-of select=&quot;$request&quot;/>&#xa;                &lt;/cmd-fw:MessageType>&#xa;                &lt;cmd-fw:SOAMsgId>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&#xa;                &lt;/cmd-fw:SOAMsgId>&#xa;            &lt;/ptn:RequestMessageType>&#xa;            &lt;ptn:DynProcessInfo>&#xa;                &lt;cmd-fw:Application>&#xa;                    &lt;xsl:value-of select=&quot;bw:getModuleProperty(&amp;quot;BW.APPLICATION.NAME&amp;quot;)&quot;/>&#xa;                &lt;/cmd-fw:Application>&#xa;                &lt;cmd-fw:Version>&#xa;                    &lt;xsl:value-of select=&quot;bw:getModuleProperty(&amp;quot;/CustInfo/ServiceVersion&amp;quot;)&quot;/>&#xa;                &lt;/cmd-fw:Version>&#xa;                &lt;cmd-fw:ProcessName>&#xa;                    &lt;xsl:value-of select=&quot;&amp;quot;GetCustInfoImpl&amp;quot;&quot;/>&#xa;                &lt;/cmd-fw:ProcessName>&#xa;            &lt;/ptn:DynProcessInfo>&#xa;            &lt;ptn:ServiceInfo>&#xa;                &lt;cmd-fw:ServiceName>&#xa;                    &lt;xsl:value-of select=&quot;bw:getModuleProperty(&amp;quot;/CustInfo/ServiceName&amp;quot;)&quot;/>&#xa;                &lt;/cmd-fw:ServiceName>&#xa;                &lt;cmd-fw:Version>&#xa;                    &lt;xsl:value-of select=&quot;bw:getModuleProperty(&amp;quot;/CustInfo/ServiceVersion&amp;quot;)&quot;/>&#xa;                &lt;/cmd-fw:Version>&#xa;                &lt;cmd-fw:OperationName>&#xa;                    &lt;xsl:value-of select=&quot;bw:getModuleProperty(&amp;quot;/CustInfo/OperationName&amp;quot;)&quot;/>&#xa;                &lt;/cmd-fw:OperationName>&#xa;            &lt;/ptn:ServiceInfo>&#xa;        &lt;/ptn:InvokeRequest>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                </tibex:inputBindings>
+                                <bpws:targets>
+                                    <bpws:target linkName="AssignToInvoke1"/>
+                                </bpws:targets>
+                                <bpws:sources>
+                                    <bpws:source linkName="Invoke1ToGetCustInfoOut"/>
+                                </bpws:sources>
+                            </bpws:invoke>
+                        </bpws:flow>
+                    </bpws:scope>
+                </bpws:onMessage>
+            </bpws:pick>
+        </bpws:flow>
+    </bpws:scope>
+</bpws:process>

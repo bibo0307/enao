@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:property="http://ns.tibco.com/bw/property" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_mJFiIIDaEeeDm8szbQawQQ" targetNamespace="http://tns.tibco.com/bw/composite/LoggingPattern" name="LoggingPattern" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:property xmi:id="_mRUREIDaEeeDm8szbQawQQ" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mRa-wIDaEeeDm8szbQawQQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mReCEIDaEeeDm8szbQawQQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mRhscIDaEeeDm8szbQawQQ" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mRlW0IDaEeeDm8szbQawQQ" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mRpoQIDaEeeDm8szbQawQQ" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mRtSoIDaEeeDm8szbQawQQ" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mRw9AIDaEeeDm8szbQawQQ" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_mR11gIDaEeeDm8szbQawQQ" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_iw0T4IDcEeeDm8szbQawQQ" name="/Connections/JMS/JMSExpiration" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_mgHQIIDcEeeDm8szbQawQQ" name="/Connections/JMS/JNDIContextURL" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_miHbQIDcEeeDm8szbQawQQ" name="/Connections/JMS/QueueConnectionFactory" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_mkahUIDcEeeDm8szbQawQQ" name="/Connections/JMS/TopicConnectionFactory" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_mm08IIDcEeeDm8szbQawQQ" name="/Connections/JMS/Username" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_mxKj4IDcEeeDm8szbQawQQ" name="/Connections/JMS/Password" type="property:password" scaext:simpleValue="#!4rkTnbVVDOGmMcDwBgLNvA==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_CfrO4IF4EeerPNrBm1xvvA" name="/Connections/JDBC/SOA/UserName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_LbkL0IF4EeerPNrBm1xvvA" name="/Connections/JDBC/SOA/PassWord" type="property:password" scaext:simpleValue="#!mNOaN+KqjdJk55hHbJqRpQ==" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_LqUZgIF4EeerPNrBm1xvvA" name="/Connections/JDBC/SOA/URL" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_QnA9AIF4EeerPNrBm1xvvA" name="/Connections/JDBC/SOA/MaxConnection" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_QsFDMIF4EeerPNrBm1xvvA" name="/Connections/JDBC/SOA/TimeOut" type="XMLSchema:int" scaext:simpleValue="0" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_SNMUEIDdEeeDm8szbQawQQ" name="/Destination/ExceptionQueue" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_aUl5AIDdEeeDm8szbQawQQ" name="/Destination/LogQueue" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_CnshoIGoEeeHw8NmzlJncQ" name="/Destination/ExceptionFile" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_CvNe4IGoEeeHw8NmzlJncQ" name="/Destination/LogFile" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_B-hlQIitEeek_9luMZpXSw" name="/Destination/LogFailureFile" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_IVgVcIitEeek_9luMZpXSw" name="/Destination/ExceptionFailureFile" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_0JPDIIDaEeeDm8szbQawQQ" name="ComponentLogAudit" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_0JPDIYDaEeeDm8szbQawQQ" processName="cleframework.log.LogAudit"/>
+  </sca:component>
+  <sca:component xmi:id="_kLTfMCAtEei_YtFJgMsTYw" name="ComponentLogException" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_kLTfMSAtEei_YtFJgMsTYw" processName="cleframework.exception.LogException"/>
+  </sca:component>
+</sca:composite>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cmd-fw="datamodel/datatypes/common/framework" xmlns:cmd-svrenv="datamodel/datatypes/common/serviceenvelope" xmlns:tns="framework/utilities/logging/logger" elementFormDefault="qualified" targetNamespace="framework/utilities/logging/logger">
+
+	<import namespace="datamodel/datatypes/common/serviceenvelope"/>
+	<import namespace="datamodel/datatypes/common/framework"/>
+	<element name="DebugRequest" type="tns:DebugRequestType"/>
+
+	<complexType name="DebugRequestType">
+		<sequence>
+			<element maxOccurs="1" minOccurs="0" name="ServiceHeader" type="cmd-svrenv:ServiceHeaderType"/>
+			<element maxOccurs="1" minOccurs="0" name="ResponseStatus" type="cmd-svrenv:ResponseStatusType">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="MessagePayLoad" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="ServiceInfo" type="cmd-fw:ServiceInfoType">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="TimeDuration" type="int">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="Direction" type="string">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="SOAMsgId" type="string">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="HostName" type="string"/>
+		</sequence>
+	</complexType>
+
+	<element name="ExceptionRequest" type="tns:ExceptionRequestType"/>
+
+	<complexType name="ExceptionRequestType">
+		<sequence>
+			<element maxOccurs="1" minOccurs="0" name="ServiceHeader" type="cmd-svrenv:ServiceHeaderType"/>
+			<element maxOccurs="1" minOccurs="0" name="MessagePayload" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="TransactionDomain" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="Category" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="StackTrace" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="ErrorCode" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="ErrorMessage" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="ErrorDescription" type="string"/>
+
+			<element maxOccurs="1" minOccurs="0" name="SOAMsgId" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="ServiceInfo" type="cmd-fw:ServiceInfoType">
+			</element>
+			<element maxOccurs="1" minOccurs="0" name="FullClass" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="Class" type="string"/>
+			<element maxOccurs="1" minOccurs="0" name="ProcessStack" type="string"/> 
+		</sequence>
+	</complexType>
+
+	<element name="ExceptionResponse" type="tns:ExceptionResponseType">
+	</element>
+
+	<element name="DebugResponse" type="tns:DebugResponseType"/>
+	
+    <complexType name="ExceptionResponseType">
+    	<sequence>
+    		<element name="out" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <complexType name="DebugResponseType">
+    	<sequence>
+    		<element name="out" type="string"/>
+    	</sequence>
+    </complexType>
+
+    
+
+    <complexType name="ExceptionMsgType">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="0" name="ApplicationID" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="ErrCode" type="string">
+    		</element>
+    		<element maxOccurs="1" minOccurs="0" name="ErrDesc" type="string">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <element name="ExceptionMsg" type="tns:ExceptionMsgType"/>
+</schema>

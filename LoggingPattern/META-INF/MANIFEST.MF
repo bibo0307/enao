@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CLEFramework Module
+Bundle-SymbolicName: LoggingPattern
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: TIBCO Software Inc.
+Require-Bundle: PrjPattern;bundle-version="1.0.0"
+TIBCO-BW-ApplicationModule: META-INF/module.bwm
+TIBCO-BW-ConfigProfile: META-INF/default.substvar
+TIBCO-BW-JobSharedVariables: META-INF/module.jsv
+Require-Capability: com.tibco.bw.model; filter:="(name=bwext)",
+ com.tibco.bw.module; filter:="(&(name=DataObjects)(version=1.0.0))",
+ com.tibco.bw.module; filter:="(&(name=PrjPattern)(version=1.0.0))",
+ com.tibco.bw.palette; filter:="(name=bw.generalactivities)",
+ com.tibco.bw.palette; filter:="(name=bw.jdbc)",
+ com.tibco.bw.palette; filter:="(name=bw.file)",
+ com.tibco.bw.palette; filter:="(name=bw.jms)",
+ com.tibco.bw.palette; filter:="(name=bw.parse)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.dataformat)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.jdbc)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.jmsconnection)",
+ com.tibco.bw.sharedresource.model; filter:="(name=bw.jndiconfiguration)"
+TIBCO-BW-ModuleSharedVariables: META-INF/module.msv
+TIBCO-BW-Version: 6.4.0 HF1 V33 2017-07-17

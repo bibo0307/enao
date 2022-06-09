@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:tns="http://xmlns.example.com/20170808164658" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SendLogToQueueService" targetNamespace="http://xmlns.example.com/20170808164658">
+  <wsdl:types>
+    <xsd:schema xmlns:extns="framework/utilities/logging/logger" elementFormDefault="unqualified" targetNamespace="http://xmlns.example.com/20170808164658">
+            <xsd:import namespace="framework/utilities/logging/logger" schemaLocation="../Schemas/Utilities/Logging/Logger.xsd"/>
+            <xsd:element name="invokeRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+                        <xsd:element minOccurs="0" ref="extns:DebugRequest"/>
+                    </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="invokeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="invokeFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="fault" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="operationRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="operationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="invokeRequest">
+    <wsdl:part element="tns:invokeRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="invokeResponse">
+    <wsdl:part element="tns:invokeResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="invokeFault">
+    <wsdl:part element="tns:invokeFault" name="parameters"/>
+  </wsdl:message>
+    <wsdl:portType name="Service">
+    <wsdl:operation name="invoke">
+      <wsdl:input message="tns:invokeRequest" name="operationInput"/>
+      <wsdl:output message="tns:invokeResponse" name="operationOutput"/>
+      <wsdl:fault message="tns:invokeFault" name="Fault"/>
+    </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

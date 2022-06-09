@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:tns="http://xmlns.example.com/20170808223633" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SendExceptionToQueueService" targetNamespace="http://xmlns.example.com/20170808223633" xmlns:xsd1="framework/utilities/logging/logger">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="unqualified" targetNamespace="http://xmlns.example.com/20170808223633">
+      <xsd:element name="InvokeRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InvokeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InvokeFault">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="fault" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    	<xsd:import namespace="framework/utilities/logging/logger"
+    		schemaLocation="../Schemas/Utilities/Logging/Logger.xsd">
+    	</xsd:import></xsd:schema></wsdl:types>
+  <wsdl:message name="InvokeRequest">
+    <wsdl:part element="xsd1:ExceptionRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InvokeResponse">
+    <wsdl:part element="xsd1:ExceptionResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="InvokeFault">
+    <wsdl:part element="tns:InvokeFault" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="Service">
+    <wsdl:operation name="Invoke">
+      <wsdl:input message="tns:InvokeRequest" name="operationInput"/>
+      <wsdl:output message="tns:InvokeResponse" name="operationOutput"/>
+      <wsdl:fault message="tns:InvokeFault" name="Fault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

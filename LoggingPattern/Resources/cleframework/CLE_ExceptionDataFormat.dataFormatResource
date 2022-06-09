@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CLEFramework="http://www.example.org/CLEFramework" xmlns:dataformat="http://ns.tibco.com/bw/palette/dataformat" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmi:id="__8dkcYk8EeeidrwDn5RSwA" name="cleframework.CLE_ExceptionDataFormat" type="dataformat:DataFormat">
+  <imports xmi:id="_j41coIlzEeeRZ9rPZNK3WA" importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/CLEFramework"/>
+  <jndi:configuration xsi:type="dataformat:DataFormat" xmi:id="__8dkcok8EeeidrwDn5RSwA" formatType="Delimiter separated" colSeparator="," colSeparatorParseRule="Treat all characters as entered as a single column separator string" lineSeparator="New Line" fillCharacter="Space" schemaElementQName="CLEFramework:ExceptionFailure" fieldOffsetsStr="SOAMsgId(0,0)&#xA;CreateTime(0,0)&#xA;ServiceName(0,0)&#xA;OperationName(0,0)&#xA;Version(0,0)&#xA;HostName(0,0)&#xA;LogCategory(0,0)&#xA;StackTrace(0,0)&#xA;Msg(0,0)&#xA;FullClass(0,0)&#xA;Class(0,0)&#xA;ProcessStack(0,0)&#xA;MsgCode(0,0)&#xA;Data(0,0)">
+    <fieldOffsets xmi:id="_j7u_oIlzEeeRZ9rPZNK3WA" name="SOAMsgId"/>
+    <fieldOffsets xmi:id="_j7u_oYlzEeeRZ9rPZNK3WA" name="CreateTime"/>
+    <fieldOffsets xmi:id="_j7u_oolzEeeRZ9rPZNK3WA" name="ServiceName"/>
+    <fieldOffsets xmi:id="_j7u_o4lzEeeRZ9rPZNK3WA" name="OperationName"/>
+    <fieldOffsets xmi:id="_j7u_pIlzEeeRZ9rPZNK3WA" name="Version"/>
+    <fieldOffsets xmi:id="_j7u_pYlzEeeRZ9rPZNK3WA" name="HostName"/>
+    <fieldOffsets xmi:id="_j7u_polzEeeRZ9rPZNK3WA" name="LogCategory"/>
+    <fieldOffsets xmi:id="_j7u_p4lzEeeRZ9rPZNK3WA" name="StackTrace"/>
+    <fieldOffsets xmi:id="_j7u_qIlzEeeRZ9rPZNK3WA" name="Msg"/>
+    <fieldOffsets xmi:id="_j7u_qYlzEeeRZ9rPZNK3WA" name="FullClass"/>
+    <fieldOffsets xmi:id="_j7u_qolzEeeRZ9rPZNK3WA" name="Class"/>
+    <fieldOffsets xmi:id="_j7u_q4lzEeeRZ9rPZNK3WA" name="ProcessStack"/>
+    <fieldOffsets xmi:id="_j7u_rIlzEeeRZ9rPZNK3WA" name="MsgCode"/>
+    <fieldOffsets xmi:id="_j7u_rYlzEeeRZ9rPZNK3WA" name="Data"/>
+  </jndi:configuration>
+</jndi:namedResource>

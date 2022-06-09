@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="-36" key="DIALOG_X_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item value="500" key="dialogHeight"/>
+		<item value="800" key="dialogWidth"/>
+		<list key="textEntries">
+		</list>
+		<list key="orderedElements">
+		</list>
+		<list key="orderedProviders">
+		</list>
+		<list key="textArray">
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="ShowViewDialog">
+		<item value="327" key="DIALOG_WIDTH"/>
+		<item value="1|.AppleSystemUIFont|13.0|0|COCOA|1|.AppleSystemUIFont" key="DIALOG_FONT_NAME"/>
+		<item value="org.eclipse.m2e.core.views.MavenRepositoryView" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
+		<item value="440" key="DIALOG_HEIGHT"/>
+		<item value="453" key="DIALOG_X_ORIGIN"/>
+		<item value="94" key="DIALOG_Y_ORIGIN"/>
+		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.egit.ui.GitCategory"/>
+			<item value="org.eclipse.m2e.core.views.repositories"/>
+		</list>
+	</section>
+</section>

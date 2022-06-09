@@ -1,0 +1,17 @@
+{
+    "records": [],
+    "resources": [
+        {
+            "location": "Service Descriptors/vnpost.vn.gateway.status.getAllStatusItem-getAllStatusItem.json",
+            "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/vnpost.vn.gateway.status.getAcceptance-getAcceptance.json",
+            "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/vnpost.vn.gateway.status.getDelivery-getDelivery.json",
+            "type": "generated"
+        }
+    ]
+}

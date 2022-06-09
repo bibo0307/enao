@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bidv.service.envelop/data/CustomerInfo" xmlns:tns="http://www.example.org/CustomerInfo" elementFormDefault="qualified" xmlns:Q1="http://bidv.service.envelop/data/CustomerInfo">
+
+    <element name="custInfoReq" type="Q1:custInfoReqType"></element>
+    
+    <element name="custInfoRes" type="Q1:custInfoResType"></element>
+    
+    <complexType name="custInfoReqType">
+    	<sequence>
+    		<element name="CIF" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="IdentificationNo" type="string" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="custInfoResType">
+    	<sequence>
+    		<element name="CIF" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="IdentificationNo" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="Address" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="FullName" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="Branch" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>

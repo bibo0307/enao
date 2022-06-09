@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/PrimitiveType" xmlns:tns="http://www.example.org/PrimitiveType" elementFormDefault="qualified">
+
+    <element name="String" type="string"></element>
+
+    <element name="Integer" type="int"></element>
+
+    <element name="HexBinary" type="hexBinary"></element>
+
+    <element name="Byte" type="byte"></element>
+
+    <element name="Base64Binary" type="base64Binary"></element>
+
+    <element name="Complex" type="tns:ComplexType"></element>
+    
+    <complexType name="ComplexType">
+    	<sequence>
+    		<element name="Base64Binary" type="base64Binary" maxOccurs="1" minOccurs="0"></element>
+    		<element name="String" type="string" maxOccurs="1" minOccurs="0"></element>
+    		<element name="Byte" type="byte" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+</schema>

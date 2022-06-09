@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/StatusGateway" xmlns:tns="http://www.example.org/StatusGateway" elementFormDefault="qualified">
+
+    <complexType name="StatusRequestType">
+    	<sequence>
+    		<element name="FromRecord" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="ToRecord" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="AllStatusItemType">
+    	<sequence>
+    		<element name="EventTime" type="dateTime" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="MaBuuGui" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="Notes" type="string"></element>
+    		<element name="POSID" type="string"></element>
+    		<element name="SoDonHang" type="string"></element>
+    		<element name="Status" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="StatusDesc" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="CustomerCode" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="AcceptanceType">
+    	<sequence>
+    		<element name="ItemCode" type="string"></element>
+    		<element name="DataCode" type="string"></element>
+    		<element name="CodAmount" type="decimal"></element>
+    		<element name="AcceptancePoscode" type="string"></element>
+    		<element name="DestinationPoscode" type="string"></element>
+    		<element name="SendingTime" type="dateTime" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="SenderFullname" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="SenderAddress" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="SenderTel" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="ReceiverFullname" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="ReceiverAddress" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="ReceiverTel" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="ValueAddedServiceList" type="string"
+    			maxOccurs="1" minOccurs="0">
+    		</element>
+    		<element name="MainFreight" type="decimal" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="VasFreight" type="decimal" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="CodFreight" type="decimal" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="CustomerCode" type="string"></element>
+    		<element name="Weight" type="decimal" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="WeightConvert" type="decimal" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="Width" type="decimal" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="Length" type="decimal" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="Height" type="decimal" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="Opt" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="GetAcceptanceResponseType">
+    	<sequence>
+            <element name="TotalRecord" type="int" maxOccurs="1" minOccurs="0"></element>
+            <element name="Acceptances" type="tns:AcceptanceType"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+        </sequence>
+    </complexType>
+
+    <complexType name="DeliveryType">
+    	<sequence>
+    		<element name="DeliveryID" type="long"></element>
+    		<element name="ItemCode" type="string"></element>
+    		<element name="CustomerCode" type="string"></element>
+    		<element name="AcceptancePOSCode" type="string"></element>
+    		<element name="ToPOSCode" type="string"></element>
+    		<element name="SendingTime" type="dateTime" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="DeliveryTime" type="dateTime" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="DeliveryTimes" type="int" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="ReceiverName" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="InputTime" type="dateTime" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="CreateTime" type="dateTime" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="LastUpdateTime" type="dateTime" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="IsDeliverable" type="boolean" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="IsReturn" type="boolean" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="DeliveryNote" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="CauseCode" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="CauseName" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="SolutionCode" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="SolutionName" type="string" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="DataCode" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="GetDeliveryResponseType">
+    	<sequence>
+    		<element name="TotalRecord" type="int" maxOccurs="1"
+    			minOccurs="0">
+    		</element>
+    		<element name="Deliverys" type="tns:DeliveryType" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="StatusRequest" type="tns:StatusRequestType"></element>
+
+    <element name="GetAllStatusItemResponse"
+    	type="tns:GetAllStatusItemResponseType">
+    </element>
+    
+    <element name="GetAcceptanceResponse"
+    	type="tns:GetAcceptanceResponseType">
+    </element>
+
+    <element name="GetDeliveryResponse"
+    	type="tns:GetDeliveryResponseType">
+    </element>
+
+    <complexType name="GetAllStatusItemResponseType">
+    	<sequence>
+    		<element name="AllStatusItem"
+    			type="tns:AllStatusItemType" maxOccurs="1" minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="FailureResponseType">
+    	<sequence>
+    		<element name="Message" type="string" maxOccurs="1" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="FailureResponse" type="tns:FailureResponseType"></element>
+</schema>

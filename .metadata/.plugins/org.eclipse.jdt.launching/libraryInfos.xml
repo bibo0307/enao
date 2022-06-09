@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<libraryInfos>
+<libraryInfo home="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0" version="1.8.0_221">
+<bootpath>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/resources.jar"/>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/rt.jar"/>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/sunrsasign.jar"/>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/jsse.jar"/>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/jce.jar"/>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/charsets.jar"/>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/jfr.jar"/>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/classes"/>
+</bootpath>
+<extensionDirs>
+<entry path="/Users/dohuy/Library/Java/Extensions"/>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/ext"/>
+<entry path="/Library/Java/Extensions"/>
+<entry path="/Network/Library/Java/Extensions"/>
+<entry path="/System/Library/Java/Extensions"/>
+<entry path="/usr/lib/java"/>
+</extensionDirs>
+<endorsedDirs>
+<entry path="/Volumes/ExtMacPro/BW67/tibcojre64/1.8.0/lib/endorsed"/>
+</endorsedDirs>
+</libraryInfo>
+</libraryInfos>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:tns="framework/utilities/logging/logger" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CLELogger" targetNamespace="framework/utilities/logging/logger">
+    <wsdl:types><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="framework/utilities/logging/logger">
+	<xsd:element name="Debug">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="in" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DebugResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="out" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="Exception">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="in" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ExceptionResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="out" type="xsd:string"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element></xsd:schema>
+    	<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    		<xsd:import namespace="framework/utilities/logging/logger"
+    			schemaLocation="../Schemas/Utilities/Logging/Logger.xsd">
+    		</xsd:import></xsd:schema></wsdl:types>
+    <wsdl:message name="DebugRequest">
+		<wsdl:part name="parameters" element="tns:DebugRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DebugResponse">
+    	<wsdl:part name="parameters" element="tns:DebugResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ExceptionRequest">
+    	<wsdl:part name="parameters" element="tns:ExceptionRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ExceptionResponse">
+    	<wsdl:part name="parameters" element="tns:ExceptionResponse"></wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="CLELogger">
+    	<wsdl:operation name="Debug">
+    		<wsdl:input message="tns:DebugRequest"></wsdl:input>
+    	</wsdl:operation>
+    	<wsdl:operation name="Exception">
+    		<wsdl:input message="tns:ExceptionRequest"></wsdl:input>
+    	</wsdl:operation>
+    </wsdl:portType></wsdl:definitions>

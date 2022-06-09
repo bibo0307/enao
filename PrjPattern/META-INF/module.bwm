@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:property="http://ns.tibco.com/bw/property" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_KwhgsHtXEeeceYNbtxqAaw" targetNamespace="http://tns.tibco.com/bw/composite/PrjPattern" name="PrjPattern" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:property xmi:id="_KyoZgHtXEeeceYNbtxqAaw" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_KytSAHtXEeeceYNbtxqAaw" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Kyw8YHtXEeeceYNbtxqAaw" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Ky1N0HtXEeeceYNbtxqAaw" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Ky6GUHtXEeeceYNbtxqAaw" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Ky--0HtXEeeceYNbtxqAaw" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_KzDQQHtXEeeceYNbtxqAaw" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_KzIIwHtXEeeceYNbtxqAaw" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_KzLzIHtXEeeceYNbtxqAaw" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_G9puANTiEeyaSb6PPs_TZg" name="BW.CLOUD.PORT" type="XMLSchema:int" scalable="true"/>
+  <sca:property xmi:id="_GTLg8IezEee2NNg2mvQIcA" name="/Destination/ExceptionQueue" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_MRQB4IezEee2NNg2mvQIcA" name="/Destination/LogQueue" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_5Vcs8CZoEeib0anErF3nyw" name="/JMSConnection/url" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_8dWSACZoEeib0anErF3nyw" name="/JMSConnection/userName" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_8iHdQCZoEeib0anErF3nyw" name="/JMSConnection/passWord" type="property:password" scaext:simpleValue="#!udoy19jftK2/X4EVJNJWbw==" publicAccess="true" scalable="true"/>
+</sca:composite>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:tns="fw/utilites/pattern/DynProcess4RequestReply/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="datamodel/datatypes/common/framework" xmlns:xsd2="framework/utilities/pattern" name="DynProcess4RequestReply" targetNamespace="fw/utilites/pattern/DynProcess4RequestReply/">
+    <wsdl:types>
+    <xsd:schema targetNamespace="fw/utilites/pattern/DynProcess4RequestReply/">
+	<xsd:element name="Invoke">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="in" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="InvokeResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<xsd:element name="out" type="xsd:string"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+    </xsd:schema>
+    	<xsd:schema>
+    		<xsd:import namespace="datamodel/datatypes/common/framework">
+    		</xsd:import>
+    		<xsd:import namespace="framework/utilities/pattern" schemaLocation="../../../Schemas/Utilities/Pattern/Pattern.xsd">
+    		</xsd:import>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="InvokeRequest">
+		<wsdl:part element="xsd1:MessageRequest" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="InvokeResponse">
+    	<wsdl:part element="xsd2:InvokeResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="operationRequest">
+    <wsdl:part element="xsd1:operationRequest1" name="parameters"/>
+  </wsdl:message>
+    <wsdl:message name="operationResponse">
+    <wsdl:part element="xsd1:operationResponse1" name="parameters"/>
+  </wsdl:message>
+    <wsdl:portType name="DynProcess4RequestReply">
+    	<wsdl:operation name="Invoke">
+    		<wsdl:input message="tns:InvokeRequest"/>
+    		<wsdl:output message="tns:InvokeResponse"/>
+    	</wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

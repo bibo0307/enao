@@ -1,0 +1,135 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "getAcceptance",
+    "description" : "Summary about the new REST service."
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/serviceApi/v1/getAcceptance" : {
+      "get" : {
+        "summary" : "",
+        "description" : "",
+        "operationId" : "get-serviceApi-v1-getAcceptance",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "FromRecord",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        }, {
+          "name" : "ToRecord",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : false
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a GetAcceptanceResponse to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/GetAcceptanceResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Acceptances" : {
+      "type" : "object",
+      "required" : [ "AcceptancePoscode", "ItemCode", "DataCode", "CustomerCode", "CodAmount", "DestinationPoscode" ],
+      "properties" : {
+        "ItemCode" : {
+          "type" : "string"
+        },
+        "DataCode" : {
+          "type" : "string"
+        },
+        "CodAmount" : {
+          "type" : "integer"
+        },
+        "AcceptancePoscode" : {
+          "type" : "string"
+        },
+        "DestinationPoscode" : {
+          "type" : "string"
+        },
+        "SendingTime" : {
+          "type" : "string"
+        },
+        "SenderFullname" : {
+          "type" : "string"
+        },
+        "SenderAddress" : {
+          "type" : "string"
+        },
+        "SenderTel" : {
+          "type" : "string"
+        },
+        "ReceiverFullname" : {
+          "type" : "string"
+        },
+        "ReceiverAddress" : {
+          "type" : "string"
+        },
+        "ReceiverTel" : {
+          "type" : "string"
+        },
+        "ValueAddedServiceList" : {
+          "type" : "string"
+        },
+        "MainFreight" : {
+          "type" : "integer"
+        },
+        "VasFreight" : {
+          "type" : "integer"
+        },
+        "CodFreight" : {
+          "type" : "integer"
+        },
+        "CustomerCode" : {
+          "type" : "string"
+        },
+        "Weight" : {
+          "type" : "integer"
+        },
+        "WeightConvert" : {
+          "type" : "integer"
+        },
+        "Width" : {
+          "type" : "integer"
+        },
+        "Length" : {
+          "type" : "integer"
+        },
+        "Height" : {
+          "type" : "integer"
+        },
+        "Opt" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetAcceptanceResponse" : {
+      "type" : "object",
+      "properties" : {
+        "TotalRecord" : {
+          "type" : "integer"
+        },
+        "Acceptances" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Acceptances",
+            "uniqueItems" : false
+          }
+        }
+      }
+    }
+  }
+}

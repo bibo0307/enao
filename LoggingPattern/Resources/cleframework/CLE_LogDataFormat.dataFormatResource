@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CLEFramework="http://www.example.org/CLEFramework" xmlns:dataformat="http://ns.tibco.com/bw/palette/dataformat" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmi:id="_8rfi8Yk8EeeidrwDn5RSwA" name="cleframework.CLE_LogDataFormat" type="dataformat:DataFormat">
+  <imports xmi:id="_vxRyoIllEeeRZ9rPZNK3WA" importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/CLEFramework"/>
+  <jndi:configuration xsi:type="dataformat:DataFormat" xmi:id="_8rfi8ok8EeeidrwDn5RSwA" formatType="Delimiter separated" colSeparator="," colSeparatorParseRule="Treat all characters as entered as a single column separator string" lineSeparator="New Line" fillCharacter="Space" schemaElementQName="CLEFramework:DebugFailure" fieldOffsetsStr="SOAMsgId(0,0)&#xA;MsgId(0,0)&#xA;Direction(0,0)&#xA;FromId(0,0)&#xA;FromName(0,0)&#xA;CorrelationId(0,0)&#xA;ParentmsgId(0,0)&#xA;CreateTime(0,0)&#xA;ServiceName(0,0)&#xA;OperationName(0,0)&#xA;Version(0,0)&#xA;TimeDuration(0,0)&#xA;Status(0,0)&#xA;ErrorCode(0,0)&#xA;ErrorDescription(0,0)&#xA;TransactionBefore(0,0)&#xA;TransactionAfter(0,0)">
+    <fieldOffsets xmi:id="_vzYEYIllEeeRZ9rPZNK3WA" name="SOAMsgId"/>
+    <fieldOffsets xmi:id="_vzYEYYllEeeRZ9rPZNK3WA" name="MsgId"/>
+    <fieldOffsets xmi:id="_vzYEYollEeeRZ9rPZNK3WA" name="Direction"/>
+    <fieldOffsets xmi:id="_vzYEY4llEeeRZ9rPZNK3WA" name="FromId"/>
+    <fieldOffsets xmi:id="_vzYEZIllEeeRZ9rPZNK3WA" name="FromName"/>
+    <fieldOffsets xmi:id="_vzYEZYllEeeRZ9rPZNK3WA" name="CorrelationId"/>
+    <fieldOffsets xmi:id="_vzYEZollEeeRZ9rPZNK3WA" name="ParentmsgId"/>
+    <fieldOffsets xmi:id="_vzYEZ4llEeeRZ9rPZNK3WA" name="CreateTime"/>
+    <fieldOffsets xmi:id="_vzYEaIllEeeRZ9rPZNK3WA" name="ServiceName"/>
+    <fieldOffsets xmi:id="_vzYEaYllEeeRZ9rPZNK3WA" name="OperationName"/>
+    <fieldOffsets xmi:id="_vzYEaollEeeRZ9rPZNK3WA" name="Version"/>
+    <fieldOffsets xmi:id="_vzYEa4llEeeRZ9rPZNK3WA" name="TimeDuration"/>
+    <fieldOffsets xmi:id="_vzYEbIllEeeRZ9rPZNK3WA" name="Status"/>
+    <fieldOffsets xmi:id="_vzYEbYllEeeRZ9rPZNK3WA" name="ErrorCode"/>
+    <fieldOffsets xmi:id="_vzYEbollEeeRZ9rPZNK3WA" name="ErrorDescription"/>
+    <fieldOffsets xmi:id="_vzYEb4llEeeRZ9rPZNK3WA" name="TransactionBefore"/>
+    <fieldOffsets xmi:id="_vzYEcIllEeeRZ9rPZNK3WA" name="TransactionAfter"/>
+  </jndi:configuration>
+</jndi:namedResource>

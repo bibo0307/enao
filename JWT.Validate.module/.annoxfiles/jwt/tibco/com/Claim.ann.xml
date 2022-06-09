@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<annox:class xmlns:annox="http://annox.dev.java.net" xmlns:jaxb="http://annox.dev.java.net/javax.xml.bind.annotation" name="Claim">
+  <jaxb:XmlAccessorType value="NONE"/>
+  <jaxb:XmlType name="ClaimType" propOrder="key value "/>
+  <jaxb:XmlRootElement name="Claim" namespace="www.tibco.com/plugin/java/xmlSchema/jwt.tibco.com.Claim"/>
+  <annox:field name="key">
+    <jaxb:XmlElement name="Key" namespace="www.tibco.com/plugin/java/xmlSchema/jwt.tibco.com.Claim"/>
+  </annox:field>
+  <annox:field name="value">
+    <jaxb:XmlElement name="Value" namespace="www.tibco.com/plugin/java/xmlSchema/jwt.tibco.com.Claim"/>
+  </annox:field>
+</annox:class>

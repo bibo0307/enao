@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:httpconnector="http://xsd.tns.tibco.com/bw/models/sharedresource/httpconnector" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_K_WVUF9iEeqqZpjc5hP2Gg" targetNamespace="http://tns.tibco.com/bw/composite/StatusGateway" name="StatusGateway" compositeext:version="1.0.0" compositeext:formatVersion="2">
+  <sca:service xmi:id="_ARo60F91EeqqZpjc5hP2Gg" name="cttdemo-serviceApi-v1-getAllStatusItem" promote="ComponentgetAllStatusItem/cttdemo-serviceApi-v1-getAllStatusItem">
+    <sca:interface.wsdl xmi:id="_AS9JcF91EeqqZpjc5hP2Gg" interface="http://xmlns.example.com/20200306133751PLT#wsdl.interface(cttdemo-serviceApi-v1-getAllStatusItem)" scaext:wsdlLocation="../Processes/vnpost/vn/gateway/status/getAllStatusItem.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_ATqUEF91EeqqZpjc5hP2Gg" name="RestService" path="/cttdemo/serviceApi/v1/getAllStatusItem" docBasePath="http://localhost:7777/StatusGateway" docResourcePath="getAllStatusItem" basePath="/" connector="statusgateway.getAllStatusItem" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/vnpost.vn.gateway.status.getAllStatusItem-getAllStatusItem.json">
+      <operation xmi:id="_AT3IYF91EeqqZpjc5hP2Gg" operationName="post" nickname="post-cttdemo-serviceApi-v1-getAllStatusItem" httpMethod="POST" responseStyle="element" requestStyle="element">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_TjfukF-MEeqqZpjc5hP2Gg" operationName="get" nickname="get-cttdemo-serviceApi-v1-getAllStatusItem" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_ciUDsF-MEeqqZpjc5hP2Gg">
+          <parameterMapping xmi:id="_ciUDsV-MEeqqZpjc5hP2Gg" parameterName="FromRecord" parameterType="Query" dataType="string"/>
+          <parameterMapping xmi:id="_dxwSUF-MEeqqZpjc5hP2Gg" parameterName="ToRecord" parameterType="Query" dataType="string"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_AV5vwF91EeqqZpjc5hP2Gg"/>
+      <advancedConfig xmi:id="_ATqUEV91EeqqZpjc5hP2Gg" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_AT3IYV91EeqqZpjc5hP2Gg" bindingName="RestService"/>
+  </sca:service>
+  <sca:service xmi:id="_v0PEgF-FEeqqZpjc5hP2Gg" name="serviceApi-v1-getAcceptance" promote="ComponentgetAcceptance/serviceApi-v1-getAcceptance">
+    <sca:interface.wsdl xmi:id="_v0RgwF-FEeqqZpjc5hP2Gg" interface="http://xmlns.example.com/20200306153743PLT#wsdl.interface(serviceApi-v1-getAcceptance)" scaext:wsdlLocation="../Processes/vnpost/vn/gateway/status/getAcceptance.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_v0eVEF-FEeqqZpjc5hP2Gg" name="RestService1" path="/serviceApi/v1/getAcceptance" docBasePath="http://localhost:7777/StatusGateway" docResourcePath="getAcceptance" basePath="/" connector="statusgateway.getAcceptance" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/vnpost.vn.gateway.status.getAcceptance-getAcceptance.json">
+      <operation xmi:id="_v0rwcF-FEeqqZpjc5hP2Gg" operationName="get" nickname="get-serviceApi-v1-getAcceptance" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_B5TzgF-GEeqqZpjc5hP2Gg">
+          <parameterMapping xmi:id="_B5TzgV-GEeqqZpjc5hP2Gg" parameterName="FromRecord" parameterType="Query" dataType="string"/>
+          <parameterMapping xmi:id="_F7IDIF-GEeqqZpjc5hP2Gg" parameterName="ToRecord" parameterType="Query" dataType="string"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_v0zFMF-FEeqqZpjc5hP2Gg"/>
+      <advancedConfig xmi:id="_v0eVEV-FEeqqZpjc5hP2Gg" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_v0rwcV-FEeqqZpjc5hP2Gg" bindingName="RestService1"/>
+  </sca:service>
+  <sca:service xmi:id="__qkKZF-NEeqqZpjc5hP2Gg" name="serviceApi-v1-getDelivery" promote="ComponentgetDelivery/serviceApi-v1-getDelivery">
+    <sca:interface.wsdl xmi:id="__qkKaF-NEeqqZpjc5hP2Gg" interface="http://xmlns.example.com/20200306163645PLT#wsdl.interface(serviceApi-v1-getDelivery)" scaext:wsdlLocation="../Processes/vnpost/vn/gateway/status/getDelivery.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="__qvJgF-NEeqqZpjc5hP2Gg" name="RestService2" path="/serviceApi/v1/getDelivery" docBasePath="http://localhost:7777/StatusGateway" docResourcePath="getDelivery" basePath="/" connector="statusgateway.getDelivery" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/vnpost.vn.gateway.status.getDelivery-getDelivery.json">
+      <operation xmi:id="__q2eQF-NEeqqZpjc5hP2Gg" operationName="get" nickname="get-serviceApi-v1-getDelivery" httpMethod="GET" responseStyle="element">
+        <parameters xmi:id="_bmiGAF-OEeqqZpjc5hP2Gg">
+          <parameterMapping xmi:id="_bmiGAV-OEeqqZpjc5hP2Gg" parameterName="FromRecord" parameterType="Query" dataType="string"/>
+          <parameterMapping xmi:id="_ctB0AF-OEeqqZpjc5hP2Gg" parameterName="ToRecord" parameterType="Query" dataType="string"/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="__q9L8F-NEeqqZpjc5hP2Gg"/>
+      <advancedConfig xmi:id="__qvJgV-NEeqqZpjc5hP2Gg" blockingQueueSize="2147483647"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="__q2eQV-NEeqqZpjc5hP2Gg" bindingName="RestService2"/>
+  </sca:service>
+  <sca:property xmi:id="_LyozcF9iEeqqZpjc5hP2Gg" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Ly4rEF9iEeqqZpjc5hP2Gg" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_LzBN8F9iEeqqZpjc5hP2Gg" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_LzCcEF9iEeqqZpjc5hP2Gg" name="BW.HOST.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_LzIisF9iEeqqZpjc5hP2Gg" name="BW.DOMAIN.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_LzPQYF9iEeqqZpjc5hP2Gg" name="BW.DEPLOYMENTUNIT.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_LzUI4F9iEeqqZpjc5hP2Gg" name="BW.APPSPACE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_Lza2kF9iEeqqZpjc5hP2Gg" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_LziyYF9iEeqqZpjc5hP2Gg" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
+  <sca:property xmi:id="_XHN8sF97EeqqZpjc5hP2Gg" name="Token" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_yoWTQF93EeqqZpjc5hP2Gg" name="/VNPostRestAPIs/Host" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_k9jXMF93EeqqZpjc5hP2Gg" name="/VNPostRestAPIs/GetAllStatusItem/Port" type="XMLSchema:int" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_nd_ToF93EeqqZpjc5hP2Gg" name="/VNPostRestAPIs/GetAllStatusItem/Path" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_tM5j8F-HEeqqZpjc5hP2Gg" name="/VNPostRestAPIs/GetAcceptance/Port" type="XMLSchema:int" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_wlM8gF-HEeqqZpjc5hP2Gg" name="/VNPostRestAPIs/GetAcceptance/Path" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_zlD7sF-OEeqqZpjc5hP2Gg" name="/VNPostRestAPIs/GetDelivery/Path" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_H4PhAF-PEeqqZpjc5hP2Gg" name="/VNPostRestAPIs/GetDelivery/Port" type="XMLSchema:int" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_JVbvMF94EeqqZpjc5hP2Gg" name="/ESB/Host" type="XMLSchema:string" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_L0qxwF94EeqqZpjc5hP2Gg" name="/ESB/GetAllStatusItemPort" type="XMLSchema:int" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_O1OYsF94EeqqZpjc5hP2Gg" name="/ESB/GetAcceptancePort" type="XMLSchema:int" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_S1kBoF94EeqqZpjc5hP2Gg" name="/ESB/GetDeliveryPort" type="XMLSchema:int" publicAccess="true" scalable="true"/>
+  <sca:component xmi:id="_AQMwYF91EeqqZpjc5hP2Gg" name="ComponentgetAllStatusItem" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_AQMwYV91EeqqZpjc5hP2Gg" processName="vnpost.vn.gateway.status.getAllStatusItem"/>
+    <sca:service xmi:id="_AQ6iEF91EeqqZpjc5hP2Gg" name="cttdemo-serviceApi-v1-getAllStatusItem">
+      <sca:interface.wsdl xmi:id="_ARIkgF91EeqqZpjc5hP2Gg" interface="http://xmlns.example.com/20200306133751PLT#wsdl.interface(cttdemo-serviceApi-v1-getAllStatusItem)" scaext:wsdlLocation="../Processes/vnpost/vn/gateway/status/getAllStatusItem.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_v0C3QF-FEeqqZpjc5hP2Gg" name="ComponentgetAcceptance" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_v0C3QV-FEeqqZpjc5hP2Gg" processName="vnpost.vn.gateway.status.getAcceptance"/>
+    <sca:service xmi:id="_v0EscF-FEeqqZpjc5hP2Gg" name="serviceApi-v1-getAcceptance">
+      <sca:interface.wsdl xmi:id="_v0EscV-FEeqqZpjc5hP2Gg" interface="http://xmlns.example.com/20200306153743PLT#wsdl.interface(serviceApi-v1-getAcceptance)" scaext:wsdlLocation="../Processes/vnpost/vn/gateway/status/getAcceptance.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="__qkKYF-NEeqqZpjc5hP2Gg" name="ComponentgetDelivery" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="__qkKYV-NEeqqZpjc5hP2Gg" processName="vnpost.vn.gateway.status.getDelivery"/>
+    <sca:service xmi:id="__qkKYl-NEeqqZpjc5hP2Gg" name="serviceApi-v1-getDelivery">
+      <sca:interface.wsdl xmi:id="__qkKY1-NEeqqZpjc5hP2Gg" interface="http://xmlns.example.com/20200306163645PLT#wsdl.interface(serviceApi-v1-getDelivery)" scaext:wsdlLocation="../Processes/vnpost/vn/gateway/status/getDelivery.bwp"/>
+    </sca:service>
+  </sca:component>
+</sca:composite>

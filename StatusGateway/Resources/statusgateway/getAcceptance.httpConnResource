@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:httpconnector="http://xsd.tns.tibco.com/bw/models/sharedresource/httpconnector" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmi:id="_hKAu8V-JEeqqZpjc5hP2Gg" name="statusgateway.getAcceptance" type="httpconnector:HttpConnectorConfiguration">
+  <jndi:configuration xsi:type="httpconnector:HttpConnectorConfiguration" xmi:id="_hKAu8l-JEeqqZpjc5hP2Gg" acceptQueueSize="-1" newAccessLogs="true">
+    <substitutionBindings xmi:id="_hKAu81-JEeqqZpjc5hP2Gg" template="host" propName="/ESB/Host"/>
+    <substitutionBindings xmi:id="_jwH1kF-JEeqqZpjc5hP2Gg" template="port" propName="/ESB/GetAcceptancePort"/>
+  </jndi:configuration>
+</jndi:namedResource>

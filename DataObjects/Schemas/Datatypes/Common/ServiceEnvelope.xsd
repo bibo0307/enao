@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cmd-svrenv="datamodel/datatypes/common/serviceenvelope" elementFormDefault="qualified" targetNamespace="datamodel/datatypes/common/serviceenvelope">
+
+    <element name="ServiceHeader" type="cmd-svrenv:ServiceHeaderType"/>
+
+    <complexType name="ServiceHeaderType">
+    	<sequence>
+    		<element name="ServiceVersion" type="string" />
+    		<element name="MessageID" type="string" />
+    		<element name="CorrelationID" type="string"></element>
+    		<element name="ParentMessageID" type="string"></element>
+    		<element name="FromID" type="cmd-svrenv:FromIDType" />
+    		<element name="CreateTime" type="dateTime"></element>
+    		<element name="Signature" type="string" />
+    	</sequence>
+    </complexType>
+
+    <complexType name="FromIDType">
+    	<sequence>
+    		<element name="ID" type="string"/>
+    		<element name="Name" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <element name="ResponseStatus"
+    	type="cmd-svrenv:ResponseStatusType">
+    </element>
+    
+    <complexType name="ResponseStatusType">
+    	<sequence>
+    		<element name="Status" type="string"></element>
+    		<element name="ErrorCode" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="ErrorDescription" type="string" minOccurs="0" maxOccurs="1"></element>
+    		<element name="ErrorDetail"
+    			type="cmd-svrenv:ErrorDetailType" minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ErrorDetailType">
+    	<sequence>
+    		<element name="ApplicationID" type="string"></element>
+    		<element name="ErrorCode" type="string"></element>
+    		<element name="ErrorDescription" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="BaseServiceRequestType">
+    	<sequence>
+    		<element name="ServiceHeader" type="cmd-svrenv:ServiceHeaderType"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="BaseServiceResponseType">
+    	<sequence>
+    		<element name="ServiceHeader" type="cmd-svrenv:ServiceHeaderType"></element>
+    		<element name="ResponseStatus" type="cmd-svrenv:ResponseStatusType"></element>
+    	</sequence>
+    </complexType>
+</schema>

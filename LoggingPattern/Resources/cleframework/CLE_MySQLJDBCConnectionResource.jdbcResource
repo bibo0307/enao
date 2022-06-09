@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_doIUQVOvEeqGXNz5OxngXg" name="cleframework.CLE_MySQLJDBCConnectionResource" type="jdbc:JdbcDataSource">
+  <jndi:reference xmi:id="_dpUnEFOvEeqGXNz5OxngXg" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
+  <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_dpUnEVOvEeqGXNz5OxngXg">
+    <substitutionBindings xmi:id="_DsNS4FOxEeqGXNz5OxngXg" template="username" propName="/Connections/JDBC/SOA/UserName"/>
+    <substitutionBindings xmi:id="_E3wgAFOxEeqGXNz5OxngXg" template="password" propName="/Connections/JDBC/SOA/PassWord"/>
+    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_dpUnElOvEeqGXNz5OxngXg" jdbcDriver="com.mysql.jdbc.Driver">
+      <substitutionBindings xmi:id="_nG-_EFPVEeq1yY2sY7ZTvg" template="dbURL" propName="/Connections/JDBC/SOA/URL"/>
+      <substitutionBindings xmi:id="_ojYroFPVEeq1yY2sY7ZTvg" template="loginTimeout" propName="/Connections/JDBC/SOA/TimeOut"/>
+    </connectionConfig>
+    <connectionProperties xmi:id="_aX8vYFPPEeq1yY2sY7ZTvg" key="jarFile" value="mysql"/>
+  </jndi:configuration>
+</jndi:namedResource>

@@ -1,0 +1,26 @@
+<process-dir height="412" id="dummy.Process" name="dummy.Process" type="process" width="609" x="140" y="20">
+<ProcessInfo createdBy="dohuy" createdOn="Mon May 16 14:36:41 ICT 2022" description="" modifiedBy="" modifiedOn="" modifiers="public" productVersion="6.7.0 V34 2020-11-06" scalable="true" singleton="true" stateless="true" type="IT"/>
+<link-dir id="870125a4-34f0-48f4-9440-af9ead63ea50" label="" linkType="SUCCESS" name="TimerToLog" points="[[233,115],[346,115]]" source="9caf3139-747e-4812-a895-944df2e7dff3" target="0b2c7011-6267-4ce2-9f3a-002e947793dc"/>
+<activity-dir height="48" id="9caf3139-747e-4812-a895-944df2e7dff3" name="Timer" type="bw.generalactivities.timer" width="48" x="184" y="91">
+<BWActivity activityTypeID="bw.generalactivities.timer" version="6.0.0.001">
+<activityConfig>
+<properties name="config" type="activityconfig:EMFProperty">
+<type href="http://ns.tibco.com/bw/palette/generalactivities#//Timer"/>
+<value endTime="2022-05-16T14:36:49.949+0700" intervalUnit="Second" runOnce="true" startTime="2022-05-16T14:36:49.949+0700" timeInterval="1" type="generalactivities:Timer"/>
+</properties>
+</activityConfig>
+</BWActivity>
+</activity-dir>
+<activity-dir height="48" id="0b2c7011-6267-4ce2-9f3a-002e947793dc" name="Log" type="bw.generalactivities.log" width="48" x="346" y="91">
+<inputBinding expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;&gt;&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;&gt;&lt;tns:ActivityInput&gt;&lt;message&gt;&lt;xsl:value-of select=&quot;&amp;quot;test dummy&amp;quot;&quot;/&gt;&lt;/message&gt;&lt;/tns:ActivityInput&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;"/>
+<partBinding expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;&gt;&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;&gt;&lt;tns:ActivityInput&gt;&lt;message&gt;&lt;xsl:value-of select=&quot;&amp;quot;test dummy&amp;quot;&quot;/&gt;&lt;/message&gt;&lt;/tns:ActivityInput&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;"/>
+<BWActivity activityTypeID="bw.generalactivities.log" version="6.0.0.001">
+<activityConfig>
+<properties name="config" type="activityconfig:EMFProperty">
+<type href="http://ns.tibco.com/bw/palette/generalactivities#//Log"/>
+<value role="Info" suppressJobInfo="true" type="generalactivities:Log"/>
+</properties>
+</activityConfig>
+</BWActivity>
+</activity-dir>
+</process-dir>

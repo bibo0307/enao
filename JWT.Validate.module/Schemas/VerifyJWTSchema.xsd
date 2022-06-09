@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:tibex="http://www.tibco.com/bpel/2007/extensions" xmlns:tns="http://jwt.tibco.com/VerityJWT" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://jwt.tibco.com/VerityJWT">
+  <xsd:element name="Request">
+    <xsd:complexType>
+      <xsd:sequence>
+                <xsd:element maxOccurs="1" minOccurs="1" name="token" type="xsd:string"/>
+                <xsd:element maxOccurs="1" minOccurs="1" name="secret" type="xsd:string"/>
+      	<xsd:element maxOccurs="1" minOccurs="1" name="issuer" type="xsd:string"/>
+      	<xsd:element maxOccurs="1" minOccurs="1" name="audience" type="xsd:string"/>
+      	<xsd:element maxOccurs="1" minOccurs="1" name="subject" type="xsd:string"/>
+
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="Response">
+  	<xsd:complexType>
+  		<xsd:sequence>
+  			<xsd:element maxOccurs="1" minOccurs="1" name="validated" type="xsd:boolean"/>
+  			<xsd:element maxOccurs="unbounded" minOccurs="0" name="claims" type="tns:Claim"/>
+            </xsd:sequence>
+  	</xsd:complexType>
+  </xsd:element>
+
+  <xsd:complexType name="Claim">
+  	<xsd:sequence>
+  		<xsd:element maxOccurs="1" minOccurs="1" name="key" type="xsd:string"/>
+  		<xsd:element maxOccurs="1" minOccurs="0" name="value" type="xsd:string"/>
+  	</xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:Q1="datamodel/datatypes/common/serviceenvelope" xmlns:cmd-fw="datamodel/datatypes/common/framework" elementFormDefault="qualified" targetNamespace="datamodel/datatypes/common/framework">
+
+	<import namespace="datamodel/datatypes/common/serviceenvelope"/>
+	<element name="DynProcessInfo" type="Q1:ResponseStatusType"/>
+
+	<complexType name="DynProcessInfoType">
+		<sequence>
+			<element name="Application" type="string"/>
+			<element name="Version" type="string"/>
+			<element name="ProcessName" type="string"/>
+		</sequence>
+	</complexType>
+
+	<element name="ServiceInfo" type="cmd-fw:ServiceInfoType"/>
+
+	<complexType name="ServiceInfoType">
+		<sequence>
+			<element name="ServiceName" type="string"/>
+			<element name="Version" type="string"/>
+			<element name="OperationName" type="string"/>
+		</sequence>
+	</complexType>
+
+	<element name="MessageRequest" type="cmd-fw:MessageRequestType"/>
+
+	<complexType name="MessageRequestType">
+		<sequence>
+			<element name="ServiceHeader" type="Q1:ServiceHeaderType"/>
+			<element name="MessageType" type="cmd-fw:MessageType"/>
+			<element name="SOAMsgId" type="string"/>
+		</sequence>
+	</complexType>
+
+	<element name="MessageType" type="cmd-fw:MessageType"/>
+
+	<complexType name="MessageType">
+		<sequence>
+			<any minOccurs="0" namespace="##any" processContents="lax">
+			</any>
+		</sequence>
+	</complexType>
+    <element name="operationRequest">
+    <complexType>
+      <sequence>
+        <element name="in" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+    <element name="operationResponse">
+    <complexType>
+      <sequence>
+        <element name="out" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+
+    
+
+    
+
+    <element name="ReplyMessageType" type="cmd-fw:ReplyMessageType"/>
+    
+    <complexType name="ReplyMessageType">
+    	<sequence>
+    		<element name="ResponseStatus" type="Q1:ResponseStatusType">
+    		</element>
+    		<any minOccurs="0" namespace="##any" processContents="lax"/>
+    	</sequence>
+    </complexType>
+    <element name="operationRequest1">
+    <complexType>
+      <sequence>
+        <element name="in" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+    <element name="operationResponse1">
+    <complexType>
+      <sequence>
+        <element name="out" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+    <element name="operationRequest11">
+    <complexType>
+      <sequence>
+        <element name="in" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+    <element name="operationResponse11">
+    <complexType>
+      <sequence>
+        <element name="out" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>

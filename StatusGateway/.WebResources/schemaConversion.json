@@ -1,0 +1,17 @@
+{"records": [
+    {
+        "jsonSchemaLocation": "/StatusGateway/Service Descriptors/vnpost.vn.gateway.status.getAllStatusItem-getAllStatusItem.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/StatusGateway"
+    },
+    {
+        "jsonSchemaLocation": "/StatusGateway/Service Descriptors/vnpost.vn.gateway.status.getAcceptance-getAcceptance.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/StatusGateway"
+    },
+    {
+        "jsonSchemaLocation": "/StatusGateway/Service Descriptors/vnpost.vn.gateway.status.getDelivery-getDelivery.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/StatusGateway"
+    }
+]}

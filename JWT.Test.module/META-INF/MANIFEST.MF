@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JWT Test Module
+Bundle-SymbolicName: JWT.Test.module
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: TIBCO Software Inc.
+Require-Bundle: JWT.Validate.module;bundle-version="1.0.0"
+TIBCO-BW-ApplicationModule: META-INF/module.bwm
+TIBCO-BW-ConfigProfile: META-INF/default.substvar
+TIBCO-BW-Edition: bwcloud
+TIBCO-BW-JobSharedVariables: META-INF/module.jsv
+Require-Capability: com.tibco.bw.model; filter:="(name=bwext)",com.tibco.bw.module; filter:="(&(name=JWT.Validate.module)(version=1.0.0))",com.tibco.bw.palette; filter:="(name=bw.generalactivities)",com.tibco.bw.sharedresource.model; filter:="(name=bw.httpconnector)",com.tibco.bw.binding.model; filter:="(name=bw.rest)"
+TIBCO-BW-ModuleSharedVariables: META-INF/module.msv
+TIBCO-BW-Version: 1.0.4 V23 2017-02-24
